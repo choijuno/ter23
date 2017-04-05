@@ -54,12 +54,31 @@ public class WebViewScript : MonoBehaviour {
         webViewObject.LoadURL(strUrl);
         webViewObject.SetVisibility(true);
         webViewObject.SetMargins(LeftMargins, TopMargins, RightMargins, BotMargins);
-        webViewObject.CanGoBack();
+    }
+
+    public void StartmovieView()
+    {
+        string strUrl = "http://ter23api.viewlab.kr/api/movie/?cidx=1";
+
+        webViewObject = (new GameObject("movieViewObject")).AddComponent<WebViewObject>();
+        webViewObject.Init((msg) => {
+            Debug.Log(string.Format("CallFromJS[{0}]", msg));
+        });
+
+        webViewObject.LoadURL(strUrl);
+        webViewObject.SetVisibility(true);
+        webViewObject.SetMargins(LeftMargins, TopMargins, RightMargins, BotMargins);
     }
 
     public void StopWebView()
     {
+        Destroy(webViewObject);
 
+    }
+
+    public void StopmovieView()
+    {
+        Destroy(webViewObject);
 
     }
 

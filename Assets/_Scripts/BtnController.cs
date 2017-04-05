@@ -68,7 +68,8 @@ public class BtnController : MonoBehaviour {
 
     //_4_channel
     public GameObject webviewObj;
-	public Text channelNum_txt;
+    public GameObject webviewObj2;
+    public Text channelNum_txt;
 	public GameObject chat_back;
 	public InputField myInput;
 
@@ -328,8 +329,14 @@ public class BtnController : MonoBehaviour {
 	}
 
 	public void _2_room_join() {
-		myAni_out.GetComponent<Animator> ().SetTrigger ("out");
+
+        channelInfo[0].text = gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
+        channelInfo[1].text = "주최 : " + GameManager.player_id + " \n 일정: 01 / 11 18:00~24:00";
+
+
+        myAni_out.GetComponent<Animator> ().SetTrigger ("out");
 		myAni_in.GetComponent<Animator> ().SetTrigger ("in");
+
 		open_panel.SetActive (true);
 
 	}
@@ -338,25 +345,46 @@ public class BtnController : MonoBehaviour {
     {
         //myAni_out.GetComponent<Animator>().SetTrigger("out");
         //myAni_in.GetComponent<Animator>().SetTrigger("in");
+
+        GameManager.select_roomNum = int.Parse(gameObject.transform.parent.name.Substring(4, 1)) - 1;
+
         open_panel.SetActive(true);
 
     }
 
     public void _2_room_create_done()
     {
-        if (roomInput.text != "") {
-            roomInfo[0].text = "진행중인 집회";
-            roomInfo[1].text = "주최자 : player" + GameManager.player_id;
-            channelInfo[0].text = roomInput.text;
-            channelInfo[1].text = "주최 : player \n 일정: 01 / 11 18:00~24:00";
+        // gameManager.GetComponent<GameManager>().roomInfo.
 
-            Debug.Log(GameManager.player_id);
-            roomOut.text = roomInput.text;
+
+
+
+        if (roomInput.text != "") {
+
+            gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName.text = "주최자 : " + GameManager.player_id;
+            gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text = roomInput.text;
             close_panel.SetActive(false);
+            gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].Create_btn.SetActive(false);
+
+            //x
+            //roomInfo[0].text = "진행중인 집회";
+
+            //roomMastername
+            //roomInfo[1].text = "주최자 : player" + GameManager.player_id;
+
+            //채널 들어갈때로 이동 {
+            
+            // }
+
+            //Debug.Log(GameManager.player_id);
+            //roomname
+            //roomOut.text = roomInput.text;
+
+
             roomInput.text = "";
 
-
-            roomOut.transform.parent.gameObject.GetComponent<Button>().enabled = true;
+            //roomnameBtn
+            //roomOut.transform.parent.gameObject.GetComponent<Button>().enabled = true;
         }
     }
 
@@ -364,6 +392,9 @@ public class BtnController : MonoBehaviour {
     {
         //myAni_out.GetComponent<Animator>().SetTrigger("out");
         //myAni_in.GetComponent<Animator>().SetTrigger("in");
+
+
+
         roomInput.text = "";
         close_panel.SetActive(false);
 
@@ -701,11 +732,14 @@ public class BtnController : MonoBehaviour {
         GameManager.talkCheck = true;
         open_panel.SetActive(true);
         webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj2.GetComponent<WebViewScript>().StartmovieView();
     }
 
     public void _ingame_tv_closebtn()
     {
-        WebViewScript.destroyCheck = true;
+        //WebViewScript.destroyCheck = true;
+        webviewObj.GetComponent<WebViewScript>().StopWebView();
+        webviewObj2.GetComponent<WebViewScript>().StopmovieView();
         GameManager.talkCheck = false;
         close_panel.SetActive(false);
     }
