@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //WebViewScript.destroyCheck = false;
-        player_id = "player";
+        //player_id = "player";
         Debug.Log(player_id);
 
         switch (Application.loadedLevelName) {
