@@ -2,10 +2,24 @@
 using UnityEngine.UI;
 using System.Collections;
 
+[System.Serializable]
+public class roomInfo_base
+{
+    public Text roomName;
+    public Text roomMasterName;
+    public GameObject Create_btn;
+}
+
+
 public class GameManager : MonoBehaviour {
     //login
     public static string user_id;
     public static string user_pass;
+
+    //_2_room
+    public static int select_roomNum;
+    public roomInfo_base[] roomInfo;
+
 
     //
     public static bool talkCheck;
