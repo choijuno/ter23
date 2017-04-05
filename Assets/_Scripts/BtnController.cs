@@ -330,8 +330,8 @@ public class BtnController : MonoBehaviour {
 
 	public void _2_room_join() {
 
-        channelInfo[0].text = gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
-        channelInfo[1].text = "주최 : " + GameManager.player_id + " \n 일정: 01 / 11 18:00~24:00";
+        //channelInfo[0].text = gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
+        //channelInfo[1].text = "주최 : " + gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName + " \n 일정: 01 / 11 18:00~24:00";
 
 
         myAni_out.GetComponent<Animator> ().SetTrigger ("out");
