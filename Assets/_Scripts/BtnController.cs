@@ -329,9 +329,10 @@ public class BtnController : MonoBehaviour {
 	}
 
 	public void _2_room_join() {
+        GameManager.select_roomNum = int.Parse(gameObject.name.Substring(4, 1)) - 1;
 
-        //channelInfo[0].text = gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
-        //channelInfo[1].text = "주최 : " + gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName + " \n 일정: 01 / 11 18:00~24:00";
+        channelInfo[0].text = gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
+        channelInfo[1].text = "주최 : " + gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName.text + " \n 일정: 01 / 11 18:00~24:00";
 
 
         myAni_out.GetComponent<Animator> ().SetTrigger ("out");
@@ -406,7 +407,7 @@ public class BtnController : MonoBehaviour {
         myAni_out.GetComponent<Animator> ().SetTrigger ("out");
 		myAni_in.GetComponent<Animator> ().SetTrigger ("in");
 		open_panel.SetActive (true);
-		channelNum_txt.text = gameObject.name.Substring (8, 2) + " 채널";
+		channelNum_txt.text = GameManager.channelNum + " 채널";
 
 		chat_back.GetComponent<chatManager> ().channelNum = gameObject.name.Substring (8, 1);
 		chat_back.GetComponent<chatManager> ().Invoke("chatJoin",0.2f);
