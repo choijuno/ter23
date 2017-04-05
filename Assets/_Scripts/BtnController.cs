@@ -675,30 +675,30 @@ public class BtnController : MonoBehaviour {
         open_panel.SetActive(true);
 
     }
-    public void _ingame_shop_picket_buy()
+    public void _ingame_shop_picket_buy() //피켓 인앱
     {
         close_panel.SetActive(false);
         GameManager.picketNum++;
         GameManager.playerXp = GameManager.playerXp - 10;
     }
 
-    public void _ingame_shop_planCard()
+    public void _ingame_shop_planCard() 
     {
         open_panel.SetActive(true);
 
     }
-    public void _ingame_shop_planCard_buy()
+    public void _ingame_shop_planCard_buy() //플랜카드 인앱
     {
         close_panel.SetActive(false);
         GameManager.plancardNum++;
         GameManager.playerXp = GameManager.playerXp - 20;
     }
 
-    public void _ingame_shop_fire()
+    public void _ingame_shop_fire() 
     {
         open_panel.SetActive(true);
     }
-    public void _ingame_shop_fire_buy()
+    public void _ingame_shop_fire_buy() //불 인앱
     {
         close_panel.SetActive(false);
         GameManager.fireNum++;
@@ -709,7 +709,7 @@ public class BtnController : MonoBehaviour {
     {
         open_panel.SetActive(true);
     }
-    public void _ingame_shop_tae_buy()
+    public void _ingame_shop_tae_buy() // 태극기 인앱
     {
         close_panel.SetActive(false);
         GameManager.taeNum++;
