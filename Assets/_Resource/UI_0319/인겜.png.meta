@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: a65dbd1eea6d37a449d4a62d05d6591c
+timeCreated: 1489958220
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: _0_window_bar
+    21300002: _2_loby_exit
+    21300004: X
+    21300006: mail_window
+    21300008: _1_interface_window
+    21300010: _1_interface_mail
+    21300012: _1_interface_itemBox
+    21300014: send_txt
+    21300016: mail_backImg
+    21300018: _1_interface_backName
+    21300020: blined_txt
+    21300022: _1_interface_backImg
+    21300024: picket_txt
+    21300026: send
+    21300028: cancel
+    21300030: _1_interface_exp
+    21300032: item_txt
+    21300034: use
+    21300036: item_window
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _0_window_bar
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2497
+        width: 1437
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _2_loby_exit
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 2532
+        width: 259
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: X
+      rect:
+        serializedVersion: 2
+        x: 3097
+        y: 2467
+        width: 160
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mail_window
+      rect:
+        serializedVersion: 2
+        x: 3477
+        y: 1039
+        width: 1068
+        height: 1516
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_interface_window
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 462
+        width: 1342
+        height: 1876
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_interface_mail
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 2284
+        width: 125
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_interface_itemBox
+      rect:
+        serializedVersion: 2
+        x: 2364
+        y: 2281
+        width: 127
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: send_txt
+      rect:
+        serializedVersion: 2
+        x: 2914
+        y: 2213
+        width: 325
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: mail_backImg
+      rect:
+        serializedVersion: 2
+        x: 4651
+        y: 1465
+        width: 739
+        height: 884
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_interface_backName
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 2038
+        width: 493
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blined_txt
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 2096
+        width: 445
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_interface_backImg
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 1126
+        width: 750
+        height: 887
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: picket_txt
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 1976
+        width: 323
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: send
+      rect:
+        serializedVersion: 2
+        x: 4660
+        y: 1226
+        width: 389
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cancel
+      rect:
+        serializedVersion: 2
+        x: 5072
+        y: 1226
+        width: 389
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_interface_exp
+      rect:
+        serializedVersion: 2
+        x: 1559
+        y: 798
+        width: 972
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: item_txt
+      rect:
+        serializedVersion: 2
+        x: 3147
+        y: 980
+        width: 189
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: use
+      rect:
+        serializedVersion: 2
+        x: 4697
+        y: 938
+        width: 390
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: item_window
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 643
+        width: 1072
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

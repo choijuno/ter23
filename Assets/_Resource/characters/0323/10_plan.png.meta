@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: fbb563c82d3957a46bd0c968f5bb8b29
+timeCreated: 1490211100
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 1planup_10_m1
+    21300002: 1planup_10_m2
+    21300004: 1planup_10_m3
+    21300006: 1planup_10_g1
+    21300008: 1planup_10_g2
+    21300010: 1planup_10_g3
+    21300012: 2plandown_10_m1
+    21300014: 2plandown_10_m2
+    21300016: 2plandown_10_m3
+    21300018: 2plandown_10_g1
+    21300020: 2plandown_10_g2
+    21300022: 2plandown_10_g3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 1planup_10_m1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 558
+        width: 95
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1planup_10_m2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 559
+        width: 95
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1planup_10_m3
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 557
+        width: 95
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1planup_10_g1
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 555
+        width: 95
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1planup_10_g2
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 557
+        width: 95
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1planup_10_g3
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 556
+        width: 95
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2plandown_10_m1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 281
+        width: 95
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2plandown_10_m2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 281
+        width: 95
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2plandown_10_m3
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 281
+        width: 95
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2plandown_10_g1
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 287
+        width: 95
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2plandown_10_g2
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 287
+        width: 95
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2plandown_10_g3
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 286
+        width: 95
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,316 @@
+fileFormatVersion: 2
+guid: 1a88517864e05b141b7fdf3c9db9fd43
+timeCreated: 1489942785
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 1picketup_40_g1
+    21300002: 1picketup_40_g2
+    21300004: 1picketup_40_g3
+    21300006: 1picketup_40_m1
+    21300008: 1picketup_40_m2
+    21300010: 1picketup_40_m3
+    21300012: 2picketdown_40_g1
+    21300014: 2picketdown_40_g2
+    21300016: 2picketdown_40_g3
+    21300018: 2picketdown_40_m1
+    21300020: 2picketdown_40_m2
+    21300022: 2picketdown_40_m3
+    21300024: 0_40_g1
+    21300026: 0_40_g2
+    21300028: 0_40_g3
+    21300030: 0_40_m1
+    21300032: 0_40_m2
+    21300034: 0_40_m3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 1picketup_40_g1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 533
+        width: 135
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_40_g2
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 532
+        width: 135
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_40_g3
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 532
+        width: 139
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_40_m1
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 531
+        width: 137
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_40_m2
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 529
+        width: 137
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_40_m3
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 529
+        width: 137
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_40_g1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 260
+        width: 135
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_40_g2
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 254
+        width: 135
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_40_g3
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 249
+        width: 139
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_40_m1
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 246
+        width: 137
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_40_m2
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 249
+        width: 137
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_40_m3
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 245
+        width: 137
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_40_g1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 14
+        width: 77
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_40_g2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 14
+        width: 72
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_40_g3
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 14
+        width: 83
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_40_m1
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 13
+        width: 70
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_40_m2
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 13
+        width: 67
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_40_m3
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 13
+        width: 66
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

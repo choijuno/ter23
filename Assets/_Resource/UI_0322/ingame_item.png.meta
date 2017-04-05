@@ -1,0 +1,260 @@
+fileFormatVersion: 2
+guid: 0b7aed8e68d90854a83c2b589ce9615a
+timeCreated: 1490171913
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: _b_back
+    21300002: _b_sendOpen
+    21300004: _b_itemOpen
+    21300006: _0_info_window
+    21300008: _0_xp_bar
+    21300010: _0_item_window
+    21300012: _0_blind
+    21300014: _0_itemCreate
+    21300016: _b_create_yes
+    21300018: _b_create_no
+    21300020: _1_send_window
+    21300022: _1_picket
+    21300024: _b_send
+    21300026: _b_send_cancel
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _b_back
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 2586
+        width: 145
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _b_sendOpen
+      rect:
+        serializedVersion: 2
+        x: 1748
+        y: 2578
+        width: 169
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _b_itemOpen
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 2583
+        width: 168
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_info_window
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 603
+        width: 1342
+        height: 1872
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_xp_bar
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 2373
+        width: 1178
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_item_window
+      rect:
+        serializedVersion: 2
+        x: 2743
+        y: 575
+        width: 1342
+        height: 1870
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_blind
+      rect:
+        serializedVersion: 2
+        x: 4183
+        y: 2103
+        width: 1153
+        height: 303
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_itemCreate
+      rect:
+        serializedVersion: 2
+        x: 5508
+        y: 950
+        width: 1042
+        height: 1439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _b_create_yes
+      rect:
+        serializedVersion: 2
+        x: 6779
+        y: 2223
+        width: 364
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _b_create_no
+      rect:
+        serializedVersion: 2
+        x: 7159
+        y: 2223
+        width: 360
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_send_window
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 558
+        width: 1041
+        height: 1439
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_picket
+      rect:
+        serializedVersion: 2
+        x: 4183
+        y: 1792
+        width: 1153
+        height: 303
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _b_send
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 325
+        width: 359
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _b_send_cancel
+      rect:
+        serializedVersion: 2
+        x: 2095
+        y: 325
+        width: 364
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

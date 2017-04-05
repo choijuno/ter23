@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: fef3eebbace08ae4e9347affd20d74a2
+timeCreated: 1489942486
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 1picketup_20_g1
+    21300002: 1picketup_20_g2
+    21300004: 1picketup_20_g3
+    21300006: 1picketup_20_m1
+    21300008: 1picketup_20_m2
+    21300010: 1picketup_20_m3
+    21300012: 2picketdown_20_g1
+    21300014: 2picketdown_20_g2
+    21300016: 2picketdown_20_g3
+    21300018: 2picketdown_20_m1
+    21300020: 2picketdown_20_m2
+    21300022: 2picketdown_20_m3
+    21300024: 0_20_m1
+    21300026: 0_20_m2
+    21300028: 20_picket_14
+    21300030: 0_20_g1
+    21300032: 0_20_g2
+    21300034: 0_20_g3
+    21300036: 0_20_m3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 1picketup_20_g1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 523
+        width: 129
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_20_g2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 522
+        width: 133
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_20_g3
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 523
+        width: 132
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_20_m1
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 522
+        width: 133
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_20_m2
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 518
+        width: 134
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1picketup_20_m3
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 522
+        width: 136
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_20_g1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 254
+        width: 129
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_20_g2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 254
+        width: 133
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_20_g3
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 254
+        width: 130
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_20_m1
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 251
+        width: 133
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_20_m2
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 249
+        width: 134
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2picketdown_20_m3
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 249
+        width: 134
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_20_m1
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 11
+        width: 62
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_20_m2
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 12
+        width: 66
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 20_picket_14
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 232
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_20_g1
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 13
+        width: 67
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_20_g2
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 13
+        width: 71
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_20_g3
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 13
+        width: 69
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 0_20_m3
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 13
+        width: 72
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

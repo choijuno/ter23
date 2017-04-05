@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: ee4d98d65c68e8d4791dda5a60c1c5e5
+timeCreated: 1490161330
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: _2_login_manDown
+    21300002: _0_login_GirlDown
+    21300004: _0_login_phoneCheck_btn
+    21300006: _2_login_8
+    21300008: _2_login_GirlUp
+    21300010: _0_login_login_btn
+    21300012: _2_login_signup_finish
+    21300014: _0_login_facebook_btn
+    21300016: _1_login_phoneCheck
+    21300018: _0_login_main
+    21300020: _2_login_signup
+    21300022: _0_login_signup_btn
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _2_login_manDown
+      rect:
+        serializedVersion: 2
+        x: 2869
+        y: 2690
+        width: 291
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_login_GirlDown
+      rect:
+        serializedVersion: 2
+        x: 3202
+        y: 2690
+        width: 293
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_login_phoneCheck_btn
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 2597
+        width: 657
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _2_login_8
+      rect:
+        serializedVersion: 2
+        x: 2865
+        y: 2563
+        width: 293
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _2_login_GirlUp
+      rect:
+        serializedVersion: 2
+        x: 3206
+        y: 2563
+        width: 291
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_login_login_btn
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 2441
+        width: 655
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _2_login_signup_finish
+      rect:
+        serializedVersion: 2
+        x: 2861
+        y: 2355
+        width: 656
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_login_facebook_btn
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 2286
+        width: 655
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _1_login_phoneCheck
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 827
+        width: 984
+        height: 1342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_login_main
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 827
+        width: 983
+        height: 1342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _2_login_signup
+      rect:
+        serializedVersion: 2
+        x: 2537
+        y: 805
+        width: 983
+        height: 1342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: _0_login_signup_btn
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 2778
+        width: 549
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
