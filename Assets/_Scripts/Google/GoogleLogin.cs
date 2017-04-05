@@ -4,12 +4,11 @@ using System.Collections;
 public class GoogleLogin : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Awake ()
+	{
+		GoogleManager.GetInstance.InitializeGPGS();
+
+		if(GoogleManager.GetInstance.CheckLogin())
+			GoogleManager.GetInstance.LoginGPGS();
 	}
 }
