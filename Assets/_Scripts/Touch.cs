@@ -17,6 +17,7 @@ public class Touch : MonoBehaviour {
 	public GameObject left;
 	public GameObject right;
 
+    public GameObject myInfoChat;
 
     public GameObject myInfo;
 
@@ -64,6 +65,7 @@ public class Touch : MonoBehaviour {
                         if (HookHit.collider.CompareTag("myCha"))
                         {
                             GameManager.talkCheck = true;
+                            myInfoChat.GetComponent<WebViewScript>().StartWebView();
                             myInfo.SetActive(true);
                         }
 

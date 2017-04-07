@@ -4,6 +4,7 @@ using System.Collections;
 public class WebViewScript : MonoBehaviour {
 
     private WebViewObject webViewObject;
+    
 
     public int TopMargins;
     public int BotMargins;
@@ -16,6 +17,8 @@ public class WebViewScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //StartWebView();
+
+        
     }
 
     // Update is called once per frame
@@ -38,6 +41,10 @@ public class WebViewScript : MonoBehaviour {
 
             }
 
+            //BotMargins = GameManager.chatSizebot;
+
+
+            
         }
 
     }
@@ -54,6 +61,7 @@ public class WebViewScript : MonoBehaviour {
         webViewObject.LoadURL(strUrl);
         webViewObject.SetVisibility(true);
         webViewObject.SetMargins(LeftMargins, TopMargins, RightMargins, BotMargins);
+        
     }
 
     public void StartmovieView()
@@ -107,5 +115,14 @@ public class WebViewScript : MonoBehaviour {
         }
         
     }
+
+
+
+    
+        
+
+ 
+
+
 }
 

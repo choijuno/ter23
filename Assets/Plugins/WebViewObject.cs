@@ -176,6 +176,7 @@ public class WebViewObject : MonoBehaviour
 #if UNITY_WEBPLAYER
         Application.ExternalCall("unityWebView.init", name);
 #elif UNITY_EDITOR || UNITY_STANDALONE_OSX
+        /*
         {
             var uri = new Uri(_CWebViewPlugin_GetAppPath());
             var info = File.ReadAllText(uri.LocalPath + "Contents/Info.plist");
@@ -205,6 +206,7 @@ public class WebViewObject : MonoBehaviour
         })()");
         rect = new Rect(0, 0, Screen.width, Screen.height);
         OnApplicationFocus(true);
+        */
 #elif UNITY_IPHONE
         webView = _CWebViewPlugin_Init(name, transparent, enableWKWebView);
 #elif UNITY_ANDROID

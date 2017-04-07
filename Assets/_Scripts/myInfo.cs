@@ -74,7 +74,7 @@ public class myInfo : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log("skinTime : " + delay_skinAni_in_3);
+        //Debug.Log("skinTime : " + delay_skinAni_in_3);
         switch(mySkin)
         {
             case Skin.none:

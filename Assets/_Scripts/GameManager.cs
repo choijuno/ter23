@@ -2,6 +2,19 @@
 using UnityEngine.UI;
 using System.Collections;
 
+
+[System.Serializable]
+public class signupInfo_base
+{
+    public Text player_id;
+    public Text player_password;
+    public Text player_password_re;
+    public Text player_phoneNum;
+    public Text player_age;
+    public Text player_sex;
+}
+
+
 [System.Serializable]
 public class roomInfo_base
 {
@@ -12,9 +25,19 @@ public class roomInfo_base
 
 
 public class GameManager : MonoBehaviour {
+    //chatTest
+    public static bool keyCheck;
+    public Text TestDebug_txt;
+    public bool keyTest;
+    
+
+
     //login
     public static string user_id;
     public static string user_pass;
+
+    //signup
+    public signupInfo_base signupInfo;
 
     //_2_room
     public static int select_roomNum;
@@ -51,6 +74,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject[] slot_stat = new GameObject[3];
 	public GameObject slot_true;
 	public GameObject slot_false;
+
+    public GameObject[] cha_slot_none = new GameObject[36];
 
 
 
@@ -96,7 +121,8 @@ public class GameManager : MonoBehaviour {
         //WebViewScript.destroyCheck = false;
         //player_id = "player";
         Debug.Log(player_id);
-
+        //SoundManager.GetInstance.BtnSoundON();
+        //SoundManager.GetInstance.BGM_SoundON();
         switch (Application.loadedLevelName) {
 		case "0.testMain":
 			Invoke ("mainSet", 1f);
@@ -111,9 +137,10 @@ public class GameManager : MonoBehaviour {
 
 
 		case "0.Main":
+                genderCheck = 1;
 
 
-			if (deleteAll_data) {
+                if (deleteAll_data) {
 				PlayerPrefs.DeleteAll ();
 			}
 
@@ -201,13 +228,28 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+    
+
 	void mainSet() {
 		main_main.SetActive (true);
 	}
 
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
+	void Update ()
+    {
+        //TestDebug_txt.text = TouchScreenKeyboard.visible.ToString();
+
+        /*if (TouchScreenKeyboard.visible)
+        {
+            keyCheck = true;
+        } else
+        {
+            keyCheck = false;
+        }*/
+
+        if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit ();
 		}
-	}
+
+        
+    }
 }

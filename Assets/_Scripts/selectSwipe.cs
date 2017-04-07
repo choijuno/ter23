@@ -2,14 +2,26 @@
 using System.Collections;
 
 public class selectSwipe : MonoBehaviour {
-	public GameObject[] slot = new GameObject[3];
+	public GameObject[] slot = new GameObject[36];
+
 	public int slotPoint;
+    public bool slotCheck;
 
 	void Start() {
-		slotPoint = 1;
+		slotPoint = 0;
+        slotCheck = true;
 	}
 
 	void Update () {
-		transform.localPosition = new Vector3 (Mathf.Lerp (transform.localPosition.x, slot [slotPoint].transform.localPosition.x, 0.3f), Mathf.Lerp (transform.localPosition.y, slot [slotPoint].transform.localPosition.y, 0.3f), Mathf.Lerp (transform.localPosition.z, slot [slotPoint].transform.localPosition.z, 0.3f));
+        transform.parent = slot[GameManager.player_select - 1].transform;
+        Debug.Log("select : " + (GameManager.player_select - 1));
+        if (slotCheck)
+        {
+
+            //transform.parent = slot[GameManager.player_select - 1].transform;
+            slotCheck = false;
+
+        }
+		transform.localPosition = new Vector3 (Mathf.Lerp (transform.localPosition.x, 0, 0.3f), transform.localPosition.y, transform.localPosition.z);
 	}
 }

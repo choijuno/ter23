@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
+
+//받을 데이타
 [System.Serializable]
 public class login{
     public string mb_id; 
@@ -15,6 +18,7 @@ public class login{
     public string code; 
 }
 
+//smsSend
 //1클래스
 [System.Serializable]
 public class sms_send{
@@ -24,6 +28,30 @@ public class sms_send{
     public string code;
 }
 
+//signup
+[System.Serializable]
+public class sign_up
+{
+    public string mb_id;
+    public string msg;
+    public string code;
+
+}
+
+//roomList
+[System.Serializable]
+public class roomList
+{
+    public string seq;
+    public string mb_id;
+    public string mb_name;
+    public string t_start;
+    public string t_end;
+    public string t_status;
+}
+
+
+//login
 [System.Serializable]
 public class userdata{
     public string name;
@@ -31,6 +59,7 @@ public class userdata{
     public int attackpower;
 }
 
+//sample
 [System.Serializable]
 public class mdata{
     public string typename;
@@ -42,6 +71,18 @@ public class result_data{
 
     public userdata[] data;
     public mdata meta;
+
+}
+
+//보낼 데이타
+[System.Serializable]
+public class signupdata
+{
+    public string id;
+    public string pass;
+    public string phoneNum;
+    public string age;
+    public string sex;
 
 }
 
@@ -58,18 +99,35 @@ public class https : MonoBehaviour {
 
     public login login_r = new login();
     public logindata logindata_r = new logindata();
-
     public sms_send smsCheck = new sms_send();
+    public sign_up sign_up_r = new sign_up();
+    public signupdata sign_updata_r = new signupdata();
+    public roomList[] roomList_r;
+    public GameObject makebtn;
+    public GameObject makebtn_parent;
 
+
+    //함수부분
     //함수로 코루틴 호출.
     public void Login_Sms(string phonenum)
     {
         StartCoroutine(login_smscheck(phonenum));
     }
+
+    public void Login_signup()
+    {
+        StartCoroutine(signup(sign_updata_r.id , sign_updata_r.pass, sign_updata_r.phoneNum, sign_updata_r.age, sign_updata_r.sex));
+    }
+
     public void Login()
     {
-        Debug.Log("void Login");
         StartCoroutine(login(logindata_r.id, logindata_r.pass));
+    }
+
+    public void Roomlist()
+    {
+        StartCoroutine(roomlist());
+
     }
 
 
@@ -136,14 +194,89 @@ public class https : MonoBehaviour {
             if (www.isError) {
                  
             } else {
-                Debug.Log("!!!");
                 login[] logins = getJsonArray<login> (www.downloadHandler.text);
                 login_r = logins [0];
-                Debug.Log(login_r.mb_id);
+                Debug.Log(www.downloadHandler.text);
+
                 //result_data objects1 = JsonUtility.FromJson<result_data>(www.downloadHandler.text);
 
             }
         }
     
     }
+
+    IEnumerator signup(string id, string pass, string hp, string age, string sex)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("mb_id", id);
+        form.AddField("mb_password", pass);
+        form.AddField("mb_hp", hp);
+        form.AddField("mb_age", age);
+        form.AddField("mb_sex", sex);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.126.166.197:8081/api/?api_key=76a60f26663388643f8bfcad1e01e123&section=regist", form))
+        {
+            yield return www.Send();
+
+            if (www.isError)
+            {
+
+            }
+            else
+            {
+                sign_up[] s_signup = getJsonArray<sign_up>(www.downloadHandler.text);
+                sign_up_r = s_signup[0];
+                //Debug.Log(sign_up_r.code);
+                Debug.Log(www.downloadHandler.text);
+            }
+        }
+    }
+
+
+    IEnumerator roomlist()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("section", "get_topic");
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.126.166.197:8081/api/?api_key=76a60f26663388643f8bfcad1e01e123", form))
+        {
+            yield return www.Send();
+
+            if (www.isError)
+            {
+
+            }
+            else
+            {
+                roomList[] s_roomList = getJsonArray<roomList>(www.downloadHandler.text);
+
+                roomList_r = new roomList[s_roomList.Length];
+
+                for (int i = 0; i < s_roomList.Length; i++)
+                {
+                    roomList_r[i] = s_roomList[i];
+
+                    GameObject btn = Instantiate(makebtn);
+                    btn.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+                    btn.gameObject.transform.parent = makebtn_parent.transform;
+
+                    btn.transform.FindChild("contentbar").transform.FindChild("room_masterName").GetComponent<Text>().text = roomList_r[i].mb_name;
+
+                    btn.transform.localScale = Vector3.one;
+                }
+
+                
+
+                Debug.Log(www.downloadHandler.text);
+                Debug.Log("roomList num : " + roomList_r.Length);
+
+                
+                //Debug.Log(sign_up_r.code);
+                Debug.Log(www.downloadHandler.text);
+            }
+        }
+    }
+
+
 }
