@@ -76,7 +76,7 @@ public class GoogleMap : MonoBehaviour
             m_i++;
         }
 
-        Debug.Log(markerdata);
+        //Debug.Log(markerdata);
 
         string keys = "&key=AIzaSyDM58tFvVQv1558qHoe0CdFlWA3jJ18PQI";
 
@@ -93,7 +93,7 @@ public class GoogleMap : MonoBehaviour
         yield return www1.Send();
         //GetComponent<Renderer>().material.mainTexture = ((UnityEngine.Networking.DownloadHandlerTexture)www1.downloadHandler).texture;
 
-		Debug.Log (currentGPSPosition);
+		//Debug.Log (currentGPSPosition);
 
         if (www1.isError)
         {

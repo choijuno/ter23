@@ -24,7 +24,31 @@ public class roomInfo_base
 }
 
 
+
 public class GameManager : MonoBehaviour {
+    //http
+    public GameObject https;
+    public GameObject autoLogin_panel;
+    //chaInfo
+    public static string idSave = "";
+    public static string passSave = "";
+
+
+    public static string nameSave = "";
+    public static string sexSave = "";
+    public static string ageSave = "";
+    public static string iconSave = "";
+    //posInfo
+    public static string seqSave = "";
+    public static string channelSave = "";
+    //dataInfo
+    public static string roomNameSave = "";
+    public static string roomMasterNameSave = "";
+
+    public GameObject loginBtn;
+
+
+    [Space]
     //chatTest
     public static bool keyCheck;
     public Text TestDebug_txt;
@@ -120,7 +144,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         //WebViewScript.destroyCheck = false;
         //player_id = "player";
-        Debug.Log(player_id);
+        //Debug.Log(player_id);
         //SoundManager.GetInstance.BtnSoundON();
         //SoundManager.GetInstance.BGM_SoundON();
         switch (Application.loadedLevelName) {
@@ -137,6 +161,7 @@ public class GameManager : MonoBehaviour {
 
 
 		case "0.Main":
+                player_select = 0;
                 genderCheck = 1;
 
 
@@ -144,8 +169,12 @@ public class GameManager : MonoBehaviour {
 				PlayerPrefs.DeleteAll ();
 			}
 
-            if(playCheck)
+                if (playCheck)
                 {
+                    https.GetComponent<https>().getChdata_r.seq = channelSave;
+                    https.GetComponent<https>().login_r.code = "100";
+                    loginBtn.GetComponent<BtnController>()._0_login_wait();
+
 
                     backGround_name.SetActive(true);
                     backGround_name.GetComponent<Animator>().SetTrigger("up");
@@ -175,6 +204,13 @@ public class GameManager : MonoBehaviour {
                     main_main.SetActive(false);
                     blackfade_out.SetActive(true);
                     Invoke("mainSet", 1f);
+
+                    
+                    
+
+                
+
+
                 }
 
 			
@@ -209,6 +245,11 @@ public class GameManager : MonoBehaviour {
 		case "1.Game":
                 talkCheck = false;
                 playCheck = true;
+
+                webviewObj.GetComponent<WebViewScript>().StartWebView();
+                webviewObj.GetComponent<WebViewScript>().OffWebView();
+                webviewObj.GetComponent<WebViewScript>().setChat();
+
                 myPlayerAvatar.GetComponent<SpriteRenderer>().sprite = avatarFace[GameManager.player_select];
                 myPlayerAvatar_Info.GetComponent<Image>().sprite = avatarImage[GameManager.player_select];
                 myPlayerAvatar_picketUp.GetComponent<Image>().sprite = avatarPicketUp[GameManager.player_select];
@@ -227,12 +268,49 @@ public class GameManager : MonoBehaviour {
             break;
 		}
 	}
-
     
 
-	void mainSet() {
+
+
+    void mainSet() {
 		main_main.SetActive (true);
-	}
+        /*
+        if (PlayerPrefs.HasKey("idSave"))
+        {
+
+
+
+
+
+            PlayerPrefs.GetString("idSave", idSave);
+            PlayerPrefs.GetString("passSave", passSave);
+
+
+            //autoLogin_panel.SetActive(true);
+            //Invoke("autoLogin", 3f);
+
+
+
+
+            GameManager.player_id = idSave;
+            GameManager.player_pass = passSave;
+            https.GetComponent<https>().logindata_r.id = idSave;
+            https.GetComponent<https>().logindata_r.pass = passSave;
+
+            https.GetComponent<https>().SendMessage("Login");
+
+
+
+
+        }
+        else
+        {
+
+        }
+        */
+
+
+    }
 
 	void Update ()
     {

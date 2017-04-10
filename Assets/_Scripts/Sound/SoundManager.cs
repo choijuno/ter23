@@ -12,7 +12,11 @@ public class SoundManager : Singleton<SoundManager>
 	void Start()
 	{
 		_audioSource = GetComponent<AudioSource>();
-	}
+
+
+        BGM_SoundON();
+
+    }
 	
 	//BGM 사운드 ON
 	public void BGM_SoundON()

@@ -63,8 +63,33 @@ public class myInfo : MonoBehaviour {
     float delay_backAni_in;
     bool backUp;
 
+    public Text name_txt;
+    public Text age_txt;
+    public Text sex_txt;
+
+
     void Start()
     {
+        if(gameObject.name == "myInfo_panel") {
+
+            name_txt.text = GameManager.nameSave;
+            age_txt.text = GameManager.ageSave;
+
+            if(GameManager.sexSave == "1")
+            {
+                sex_txt.text = "남";
+            }
+            else
+            {
+                sex_txt.text = "여";
+            }
+            
+        } else
+        {
+            name_txt.text = "TestBot";
+            age_txt.text = "10";
+            sex_txt.text = "성별";
+        }
 
         myNum = GameManager.player_select;
         delay_skinAni_in = 0f;
@@ -191,7 +216,7 @@ public class myInfo : MonoBehaviour {
                 break;
 
         }
-
+        /*
         switch(myBackground)
         {
             case backGround_Image.none:
@@ -273,7 +298,7 @@ public class myInfo : MonoBehaviour {
                 }
                 break;
 
-        }
+        }*/
 
 
     }

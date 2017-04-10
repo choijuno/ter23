@@ -47,6 +47,7 @@ public class BtnController : MonoBehaviour {
     //_0_1_phoneCheck
     public InputField phoneNum_Check;
     public InputField CheckNum_Check;
+    public Text phoneNum_txt;
 
     //0_2_signup
     public InputField signupId_txt;
@@ -79,6 +80,10 @@ public class BtnController : MonoBehaviour {
 	public InputField myInput;
 
 
+    //voice
+    public GameObject voicePanel;
+
+
 
 	public void _0_login() {
         //id
@@ -94,19 +99,21 @@ public class BtnController : MonoBehaviour {
 
         //코드 200,100밖에 없어서 아이디 비밀번호 오류 구분 불가.
         wait_Panel.SetActive(true);
-        Invoke("_0_login_wait", 2f);
 
 		
 	}
     public void _0_login_wait()
     {
-        int testSex = 2;
-        int testAge = 99;
+
+        
+        
         wait_Panel.SetActive(false);
 
         //Debug.Log(https.GetComponent<https>().login_r.code);
         if (https.GetComponent<https>().login_r.code == "100")
         {
+            int testSex = int.Parse(GameManager.sexSave);
+            int testAge = int.Parse(GameManager.ageSave);
 
             //open_panel.SetActive (true);
             open_panel2.SetActive(true);
@@ -146,6 +153,8 @@ public class BtnController : MonoBehaviour {
 
             }
 
+            selectPoint.transform.parent = selectPoint.GetComponent<selectSwipe>().slot[GameManager.player_select].transform;
+
 
 
 
@@ -161,7 +170,7 @@ public class BtnController : MonoBehaviour {
 
             myAni.GetComponent<Animator>().SetTrigger("up");
             myAni_out.GetComponent<Animator>().SetTrigger("out");
-
+            
         }
     }
 
@@ -201,9 +210,12 @@ public class BtnController : MonoBehaviour {
             if (https.GetComponent<https>().smsCheck.cert_code == CheckNum_Check.text)
             {
                 open_panel.SetActive(true);
+                phoneNum_txt.text = phoneNum_Check.text.Substring(0, 3) + "-" + phoneNum_Check.text.Substring(3, 4) + "-" + phoneNum_Check.text.Substring(7, 4);
             }
 
         }
+
+        
 
 
     }
@@ -234,7 +246,6 @@ public class BtnController : MonoBehaviour {
     public void _0_login_signup_finish()
     {
         //if
-
 
 
 
@@ -329,31 +340,37 @@ public class BtnController : MonoBehaviour {
 
 
 
-		switch (GameManager.player_select) {
-		case 0:
-
-			break;
-		case 1:
-
-			break;
-		case 2:
-
-			break;
-		}
 
 
+        https.GetComponent<https>().update_icondata_r.mb_id = https.GetComponent<https>().login_r.mb_id;
+        https.GetComponent<https>().update_icondata_r.mb_icon = (GameManager.player_select-1).ToString();
         https.GetComponent<https>().Roomlist();
+
 	}
 
-	public void _2_room_join() {
-        GameManager.select_roomNum = int.Parse(gameObject.name.Substring(4, 1)) - 1;
 
-        channelInfo[0].text = gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
-        channelInfo[1].text = "주최 : " + gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName.text + " \n 일정: 01 / 11 18:00~24:00";
+
+	public void _2_room_join() {
+        //Debug.Log(int.Parse(gameObject.name.Substring(4, 1)));
+
+        //GameManager.select_roomNum = int.Parse(gameObject.name.Substring(4, 1));
+
+        channelInfo[0].text = roomInfo[0].text;
+        GameManager.roomNameSave = channelInfo[0].text;
+        //gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text;
+        channelInfo[1].text = roomInfo[1].text;
+        GameManager.roomMasterNameSave = channelInfo[1].text;
+        //"주최 : " + gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName.text + " \n 일정: 01 / 11 18:00~24:00";
+
+
+        https.GetComponent<https>().getChdata_r.seq = gameObject.name.Substring(4, 1);
+        GameManager.seqSave = https.GetComponent<https>().getChdata_r.seq;
+        https.GetComponent<https>().Get_ch();
+
 
 
         myAni_out.GetComponent<Animator> ().SetTrigger ("out");
-		myAni_in.GetComponent<Animator> ().SetTrigger ("in");
+        open_panel.GetComponent<Animator> ().SetTrigger ("in");
 
 		open_panel.SetActive (true);
 
@@ -364,34 +381,66 @@ public class BtnController : MonoBehaviour {
         //myAni_out.GetComponent<Animator>().SetTrigger("out");
         //myAni_in.GetComponent<Animator>().SetTrigger("in");
 
-        GameManager.select_roomNum = int.Parse(gameObject.transform.parent.name.Substring(4, 1)) - 1;
+        //GameManager.select_roomNum = int.Parse(gameObject.transform.parent.name.Substring(4, 1)) - 1;
 
         open_panel.SetActive(true);
 
+    }
+
+    public void room_create_next()
+    {
+
+
+
+        close_panel.SetActive(false);
+        
+        https.GetComponent<https>().Roomlist();
+
+        //성공
+
+        //방만들기 팝업닫는다.
+        //채널목록을 
+        //.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName.text = "주최자 : " + GameManager.player_id;
+        //gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text = roomInput.text;
+        //gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].Create_btn.SetActive(false);
+
+        roomInput.text = "";
     }
 
     public void _2_room_create_done()
     {
         // gameManager.GetComponent<GameManager>().roomInfo.
 
-
+        
 
 
         if (roomInput.text != "") {
 
-            gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomMasterName.text = "주최자 : " + GameManager.player_id;
-            gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].roomName.text = roomInput.text;
-            close_panel.SetActive(false);
-            gameManager.GetComponent<GameManager>().roomInfo[GameManager.select_roomNum].Create_btn.SetActive(false);
+
+
+
+
+
+            https.GetComponent<https>().roommakedata_r.id = https.GetComponent<https>().logindata_r.id;
+            https.GetComponent<https>().roommakedata_r.roomname = roomInput.text;
+            https.GetComponent<https>().roommakedata_r.t_start = "1~5";
+            https.GetComponent<https>().roommakedata_r.t_end = "5~7";
+
+            https.GetComponent<https>().Roommake();
+            
+
+         
+
+
 
             //x
             //roomInfo[0].text = "진행중인 집회";
 
             //roomMastername
-            //roomInfo[1].text = "주최자 : player" + GameManager.player_id;
+            //roomInfo[1].text = "주최 : " + GameManager.player_id;
 
             //채널 들어갈때로 이동 {
-            
+
             // }
 
             //Debug.Log(GameManager.player_id);
@@ -399,7 +448,7 @@ public class BtnController : MonoBehaviour {
             //roomOut.text = roomInput.text;
 
 
-            roomInput.text = "";
+
 
             //roomnameBtn
             //roomOut.transform.parent.gameObject.GetComponent<Button>().enabled = true;
@@ -418,9 +467,29 @@ public class BtnController : MonoBehaviour {
 
     }
 
-    public void _3_channel_join() {
-        GameManager.channelNum = int.Parse(gameObject.name.Substring(8, 2));
+    public void _2_room_back()
+    {
+        //myAni_out.GetComponent<Animator>().SetTrigger("out");
+        //myAni_in.GetComponent<Animator>().SetTrigger("in");
 
+        //GameManager.select_roomNum = int.Parse(gameObject.transform.parent.name.Substring(4, 1)) - 1;
+
+        //WebViewScript.destroyCheck = true;
+        //myAni_out.GetComponent<Animator>().SetTrigger("out");
+        //myAni_in.GetComponent<Animator>().SetTrigger("in");
+
+        //open_panel.SetActive(true);
+
+        //https.GetComponent<https>().Roomlist();
+        myAni_out.GetComponent<Animator>().SetTrigger("out");
+        myAni_in.GetComponent<Animator>().SetTrigger("in");
+
+    }
+
+    public void _3_channel_join() {
+
+        GameManager.channelNum = int.Parse(gameObject.name.Substring(8, 2));
+        GameManager.channelSave = GameManager.channelNum.ToString();
         myAni_out.GetComponent<Animator> ().SetTrigger ("out");
 		myAni_in.GetComponent<Animator> ().SetTrigger ("in");
 		open_panel.SetActive (true);
@@ -434,6 +503,15 @@ public class BtnController : MonoBehaviour {
 
     }
 
+    public void _3_channel_back()
+    {
+        https.GetComponent<https>().Roomlist();
+        myAni_out.GetComponent<Animator>().SetTrigger("out");
+        myAni_in.GetComponent<Animator>().SetTrigger("in");
+
+    }
+    
+
 
 	//_4
 	public void _4_lobby_send(){
@@ -443,8 +521,14 @@ public class BtnController : MonoBehaviour {
 	}
 
 	public void _4_lobby_back() {
+        https.GetComponent<https>().getChdata_r.seq = GameManager.seqSave;
+        https.GetComponent<https>().Get_ch();
 
-        WebViewScript.destroyCheck = true;
+        channelInfo[0].text = GameManager.roomNameSave;
+        channelInfo[1].text = GameManager.roomMasterNameSave;
+
+        //WebViewScript.destroyCheck = true;
+        webviewObj.GetComponent<WebViewScript>().StopWebView();
 		myAni_out.GetComponent<Animator> ().SetTrigger ("out");
 		myAni_in.GetComponent<Animator> ().SetTrigger ("in");
 
@@ -511,7 +595,7 @@ public class BtnController : MonoBehaviour {
 	}
 
 	public void _1_send() {
-        webviewObj.GetComponent<WebViewScript>().StopWebView();
+        webviewObj.GetComponent<WebViewScript>().OffWebView();
         send_panel.SetActive(true);
         //close_panel.SetActive(false);
     }
@@ -527,7 +611,7 @@ public class BtnController : MonoBehaviour {
 
 		send_input_txt.text = "";
 		GameManager.talkCheck = false;
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
         close_panel.SetActive (false);
 
     }
@@ -535,7 +619,7 @@ public class BtnController : MonoBehaviour {
 	public void _1_sendFinishclose() {
 		send_input_txt.text = "";
 		GameManager.talkCheck = false;
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
         close_panel.SetActive (false);
 
         
@@ -549,14 +633,32 @@ public class BtnController : MonoBehaviour {
 
     }
 
+    public void _ingame_InfoShopBtn()
+    {
+        open_panel.SetActive(true);
+        open_panel2.SetActive(true);
+        webviewObj.GetComponent<WebViewScript>().OffWebView();
+
+    }
+
+    public void _ingame_InfoShopCloseBtn()
+    {
+        close_panel.SetActive(false);
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
+        this.gameObject.SetActive(false);
+
+    }
+
+
     public void _ingame_itemBtn()
     {
         open_panel.SetActive(true);
-        webviewObj.GetComponent<WebViewScript>().StopWebView();
+        webviewObj.GetComponent<WebViewScript>().OffWebView();
         picketNum_txt.text = "X " + GameManager.picketNum;
         plancardNum_txt.text = "X " + GameManager.plancardNum;
         fireNum_txt.text = "X " + GameManager.fireNum;
         taeNum_txt.text = "X " + GameManager.taeNum;
+
     }
 
 
@@ -617,7 +719,7 @@ public class BtnController : MonoBehaviour {
             _ingame_myTalkBtn();
             GameManager.picketNum--;
             myInfo.GetComponent<myInfo>().SetItem(1);
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
     }
 
     public void _ingame_usePlanCard()
@@ -625,7 +727,7 @@ public class BtnController : MonoBehaviour {
             _ingame_myTalkBtn();
             GameManager.plancardNum--;
             myInfo.GetComponent<myInfo>().SetItem(2);
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
     }
 
     public void _ingame_useFire()
@@ -634,7 +736,7 @@ public class BtnController : MonoBehaviour {
             myInfo.GetComponent<myInfo>().SetItem(3);
             close_panel.SetActive(false);
             close_panel2.SetActive(false);
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
     }
 
     public void _ingame_useTae()
@@ -643,7 +745,7 @@ public class BtnController : MonoBehaviour {
             myInfo.GetComponent<myInfo>().SetItem(4);
             close_panel.SetActive(false);
             close_panel2.SetActive(false);
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
     }
 
     public void _ingame_useItem_cancel()
@@ -669,7 +771,7 @@ public class BtnController : MonoBehaviour {
 
     public void _ingame_itemExitBtn()
     {
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
         close_panel.SetActive(false);
     }
 
@@ -711,19 +813,18 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_picket_buy() //피켓 인앱
     {
         close_panel.SetActive(false);
-        GameManager.picketNum++;
+        GameManager.picketNum = GameManager.picketNum + 4;
         GameManager.playerXp = GameManager.playerXp - 10;
     }
 
     public void _ingame_shop_planCard() 
     {
         open_panel.SetActive(true);
-
     }
     public void _ingame_shop_planCard_buy() //플랜카드 인앱
     {
         close_panel.SetActive(false);
-        GameManager.plancardNum++;
+        GameManager.plancardNum = GameManager.plancardNum + 4;
         GameManager.playerXp = GameManager.playerXp - 20;
     }
 
@@ -734,7 +835,7 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_fire_buy() //불 인앱
     {
         close_panel.SetActive(false);
-        GameManager.fireNum++;
+        GameManager.fireNum = GameManager.fireNum + 4;
         GameManager.playerXp = GameManager.playerXp - 40;
     }
 
@@ -745,7 +846,7 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_tae_buy() // 태극기 인앱
     {
         close_panel.SetActive(false);
-        GameManager.taeNum++;
+        GameManager.taeNum = GameManager.taeNum + 4;
         GameManager.playerXp = GameManager.playerXp - 40;
     }
 
@@ -762,7 +863,7 @@ public class BtnController : MonoBehaviour {
 
     public void _ingame_myInfo_close_btn()
     {
-        webviewObj.GetComponent<WebViewScript>().StopWebView();
+        webviewObj.GetComponent<WebViewScript>().OffWebView();
         GameManager.talkCheck = false;
         close_panel.SetActive(false);
     }
@@ -771,14 +872,16 @@ public class BtnController : MonoBehaviour {
     {
         GameManager.talkCheck = true;
         open_panel.SetActive(true);
-        webviewObj.GetComponent<WebViewScript>().StartWebView();
         webviewObj2.GetComponent<WebViewScript>().StartmovieView();
+        webviewObj.GetComponent<WebViewScript>().setMovieChat();
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
     }
 
     public void _ingame_tv_closebtn()
     {
         //WebViewScript.destroyCheck = true;
-        webviewObj.GetComponent<WebViewScript>().StopWebView();
+        webviewObj.GetComponent<WebViewScript>().OffWebView();
+        webviewObj.GetComponent<WebViewScript>().setChat();
         webviewObj2.GetComponent<WebViewScript>().StopmovieView();
         GameManager.talkCheck = false;
         close_panel.SetActive(false);
@@ -787,10 +890,8 @@ public class BtnController : MonoBehaviour {
 
     public void _ingame_notice_close()
     {
-
         GameManager.talkCheck = false;
         close_panel.SetActive(false);
-
     }
 
     public void sendTalk_test()
@@ -840,8 +941,108 @@ public class BtnController : MonoBehaviour {
                     break;
             }
 
+            webviewObj.GetComponent<WebViewScript>().OnWebView();
+
 
             Debug.Log("send_talk!");
         }
     }
+
+    public void _ingame_otheInfo()
+    {
+        if (!GameManager.talkCheck)
+        {
+            GameManager.talkCheck = true;
+
+            //send_window.transform.localPosition = new Vector3(transform.localPosition.x + 55f, transform.localPosition.y + 30f, transform.localPosition.z);
+            send_panel.SetActive(true);
+
+
+            botImage[0].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFace[GetComponent<botTestNum>().bot_testNum];
+            botImage[1].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPicketUp[GetComponent<botTestNum>().bot_testNum];
+            botImage[2].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPicketDown[GetComponent<botTestNum>().bot_testNum];
+            botImage[3].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPlanCardUp[GetComponent<botTestNum>().bot_testNum];
+            botImage[4].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPlanCardDown[GetComponent<botTestNum>().bot_testNum];
+            botImage[5].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFire1[GetComponent<botTestNum>().bot_testNum];
+            botImage[6].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFire2[GetComponent<botTestNum>().bot_testNum];
+            botImage[7].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFire3[GetComponent<botTestNum>().bot_testNum];
+            botImage[8].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarTae1[GetComponent<botTestNum>().bot_testNum];
+            botImage[9].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarTae2[GetComponent<botTestNum>().bot_testNum];
+
+
+
+            switch (GetComponent<botTestNum>().botTestStat)
+            {
+                case botTestNum.botStat.none:
+
+                    myInfo.GetComponent<myInfo>().SetItem(0);
+                    break;
+                case botTestNum.botStat.picket:
+
+                    myInfo.GetComponent<myInfo>().SetItem(1);
+                    break;
+                case botTestNum.botStat.card:
+
+                    myInfo.GetComponent<myInfo>().SetItem(2);
+                    break;
+                case botTestNum.botStat.fire:
+
+                    myInfo.GetComponent<myInfo>().SetItem(3);
+                    break;
+                case botTestNum.botStat.tae:
+
+                    myInfo.GetComponent<myInfo>().SetItem(4);
+                    break;
+            }
+
+            webviewObj.GetComponent<WebViewScript>().OnWebView();
+
+
+            Debug.Log("send_talk!");
+        }
+    }
+
+
+    public void _menu_btn()
+    {
+        GameManager.talkCheck = true;
+        open_panel.SetActive(true);
+        webviewObj.GetComponent<WebViewScript>().OffWebView();
+
+    }
+
+    public void _menuClose_btn()
+    {
+        GameManager.talkCheck = false;
+        close_panel.SetActive(false);
+        webviewObj.GetComponent<WebViewScript>().OnWebView();
+
+    }
+    public void _menuCloseingame_btn()
+    {
+        GameManager.talkCheck = false;
+        close_panel.SetActive(false);
+
+    }
+
+    public void _voice_use()
+    {
+        //조건
+        open_panel.SetActive(true);
+
+    }
+
+    public void _voice_back()
+    {
+        open_panel.GetComponent<Button>().interactable = false;
+        open_panel2.GetComponent<Button>().interactable = false;
+        close_panel.SetActive(false);
+        
+
+
+    }
+
+
+    
+
 }

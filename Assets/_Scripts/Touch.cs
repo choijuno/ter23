@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Touch : MonoBehaviour {
@@ -21,14 +22,25 @@ public class Touch : MonoBehaviour {
 
     public GameObject myInfo;
 
-	int testCount;
+    [Space]
+    public GameObject npc;
+    public GameObject tv;
+    public GameObject shop;
+
+    [Space]
+    public GameObject webView;
+    public GameObject movieView;
+    public GameObject webViewManager;
+
+
+    int testCount;
 
 	void Start () {
 		
 		target = transform.position;
 		myAvatar.transform.localScale = new Vector3 (AvatarScale, AvatarScale, AvatarScale);
-
-	}
+        
+    }
 
 	void Update () {
 
@@ -45,12 +57,13 @@ public class Touch : MonoBehaviour {
 				
 				if (Physics.Raycast (HookRay, out HookHit)) {
 
-					if (HookHit.collider.CompareTag ("ground")) {
-						Debug.DrawRay (HookRay.origin, HookRay.direction, Color.red);
+                    if (HookHit.collider.CompareTag("ground"))
+                    {
+                        Debug.DrawRay(HookRay.origin, HookRay.direction, Color.red);
 
-						target = HookHit.point;
+                        target = HookHit.point;
 
-						Debug.Log ("Hook was hit to ground.");
+                        Debug.Log("Hook was hit to ground.");
 
                         if (transform.position.x >= Camera.main.ScreenToWorldPoint(Input.mousePosition).x)
                         {
@@ -62,18 +75,26 @@ public class Touch : MonoBehaviour {
                         }
                     }
 
-                        if (HookHit.collider.CompareTag("myCha"))
-                        {
-                            GameManager.talkCheck = true;
-                            myInfoChat.GetComponent<WebViewScript>().StartWebView();
-                            myInfo.SetActive(true);
-                        }
-
-                        if (HookHit.collider.CompareTag("other"))
-                        {
-                        
-                        }
+                    if (HookHit.collider.CompareTag("myCha"))
+                    {
+                        GameManager.talkCheck = true;
+                        webViewManager.GetComponent<WebViewScript>().OnWebView();
+                        myInfo.SetActive(true);
                     }
+
+                    if (HookHit.collider.CompareTag("other"))
+                    {
+                        npc.GetComponent<BtnController>().sendTalk_test();
+                    }
+                    if (HookHit.collider.CompareTag("tv"))
+                    {
+                        tv.GetComponent<BtnController>()._ingame_tv_btn();
+                    }
+                    if (HookHit.collider.CompareTag("shop"))
+                    {
+                        shop.GetComponent<BtnController>()._ingame_shop_btn();
+                    }
+                }
 			} else {
 				target = transform.position;
 			}

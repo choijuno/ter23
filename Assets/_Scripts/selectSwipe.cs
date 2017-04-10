@@ -13,11 +13,11 @@ public class selectSwipe : MonoBehaviour {
 	}
 
 	void Update () {
-        transform.parent = slot[GameManager.player_select - 1].transform;
-        Debug.Log("select : " + (GameManager.player_select - 1));
+        
+        //Debug.Log("select : " + (GameManager.player_select - 1));
         if (slotCheck)
         {
-
+            transform.parent = slot[GameManager.player_select].transform;
             //transform.parent = slot[GameManager.player_select - 1].transform;
             slotCheck = false;
 
