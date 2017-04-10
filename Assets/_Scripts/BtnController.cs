@@ -82,10 +82,18 @@ public class BtnController : MonoBehaviour {
 
     //voice
     public GameObject voicePanel;
+    public GameObject voiceManager;
+    public GameObject soundManager;
 
 
 
-	public void _0_login() {
+
+
+    public Text statinfo_name_txt;
+    public Text statinfo_age_txt;
+    public Text statinfo_sex_txt;
+
+    public void _0_login() {
         //id
 		GameManager.player_id = playerid_txt.text;
 		GameManager.player_pass = playerpass_txt.text;
@@ -102,6 +110,7 @@ public class BtnController : MonoBehaviour {
 
 		
 	}
+
     public void _0_login_wait()
     {
 
@@ -177,8 +186,8 @@ public class BtnController : MonoBehaviour {
 
     public void _0_login_signup()
     {
-        
-        open_panel.SetActive(true);
+        webviewObj.GetComponent<WebViewScript>().StartSignup();
+        //open_panel.SetActive(true);
 
     }
 
@@ -246,14 +255,18 @@ public class BtnController : MonoBehaviour {
     public void _0_login_signup_finish()
     {
         //if
+        string tt = https.GetComponent<https>().signCheck_r.mb_birth;
 
+        string age = tt.Substring(0, 4);
+
+       
 
 
         https.GetComponent<https>().sign_updata_r.id = signupId_txt.text;
         https.GetComponent<https>().sign_updata_r.pass = signupPass_txt.text;
-        https.GetComponent<https>().sign_updata_r.phoneNum = https.GetComponent<https>().smsCheck.phone;
-        https.GetComponent<https>().sign_updata_r.age = signupAge_txt.text;
-        https.GetComponent<https>().sign_updata_r.sex = GameManager.genderCheck.ToString();
+        https.GetComponent<https>().sign_updata_r.phoneNum = "01000000000";
+        https.GetComponent<https>().sign_updata_r.age = (System.DateTime.Now.Year - (int.Parse(age) + 1)).ToString();
+        https.GetComponent<https>().sign_updata_r.sex = https.GetComponent<https>().signCheck_r.mb_sex;
 
 
         https.GetComponent<https>().SendMessage("Login_signup");
@@ -344,9 +357,13 @@ public class BtnController : MonoBehaviour {
 
         https.GetComponent<https>().update_icondata_r.mb_id = https.GetComponent<https>().login_r.mb_id;
         https.GetComponent<https>().update_icondata_r.mb_icon = (GameManager.player_select-1).ToString();
-        https.GetComponent<https>().Roomlist();
+        Debug.Log(GameManager.player_select);
+        https.GetComponent<https>().Update_icon();
 
-	}
+        https.GetComponent<https>().Roomlist();
+        
+
+    }
 
 
 
@@ -501,6 +518,7 @@ public class BtnController : MonoBehaviour {
         //new
         webviewObj.GetComponent<WebViewScript>().StartWebView();
 
+        https.GetComponent<https>().Chat_member();
     }
 
     public void _3_channel_back()
@@ -712,6 +730,7 @@ public class BtnController : MonoBehaviour {
             open_panel2.SetActive(true);
         }
     }
+    
 
     public void _ingame_usePicket()
     {
@@ -894,17 +913,22 @@ public class BtnController : MonoBehaviour {
         close_panel.SetActive(false);
     }
 
-    public void sendTalk_test()
+    public void sendTalk_test(int chaNum)
     {
+        Debug.Log("!!!");
         if (!GameManager.talkCheck)
         {
+            Debug.Log("talkCheck");
             GameManager.talkCheck = true;
 
             //send_window.transform.localPosition = new Vector3(transform.localPosition.x + 55f, transform.localPosition.y + 30f, transform.localPosition.z);
             send_panel.SetActive(true);
 
-
-            botImage[0].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFace[GetComponent<botTestNum>().bot_testNum];
+            
+            botImage[0].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarImage[int.Parse(https.GetComponent<https>().chat_Member_r[chaNum].mb_icon)];
+            
+       
+            /*
             botImage[1].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPicketUp[GetComponent<botTestNum>().bot_testNum];
             botImage[2].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPicketDown[GetComponent<botTestNum>().bot_testNum];
             botImage[3].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarPlanCardUp[GetComponent<botTestNum>().bot_testNum];
@@ -914,9 +938,9 @@ public class BtnController : MonoBehaviour {
             botImage[7].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFire3[GetComponent<botTestNum>().bot_testNum];
             botImage[8].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarTae1[GetComponent<botTestNum>().bot_testNum];
             botImage[9].GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarTae2[GetComponent<botTestNum>().bot_testNum];
+            */
 
-
-
+            /*
             switch (GetComponent<botTestNum>().botTestStat)
             {
                 case botTestNum.botStat.none:
@@ -940,11 +964,35 @@ public class BtnController : MonoBehaviour {
                     myInfo.GetComponent<myInfo>().SetItem(4);
                     break;
             }
+            */
 
             webviewObj.GetComponent<WebViewScript>().OnWebView();
 
 
             Debug.Log("send_talk!");
+
+
+
+
+
+
+            Debug.Log(https.GetComponent<https>().chat_Member_r[chaNum].mb_id);
+
+            statinfo_name_txt.text = https.GetComponent<https>().chat_Member_r[chaNum].mb_id;
+            statinfo_age_txt.text = https.GetComponent<https>().chat_Member_r[chaNum].mb_age;
+            
+            if (https.GetComponent<https>().chat_Member_r[chaNum].mb_sex == "1")
+            {
+
+                statinfo_sex_txt.text = "남성";
+            }
+            else
+            {
+                statinfo_sex_txt.text = "여성";
+            }
+
+
+            
         }
     }
 
@@ -1007,7 +1055,10 @@ public class BtnController : MonoBehaviour {
     {
         GameManager.talkCheck = true;
         open_panel.SetActive(true);
-        webviewObj.GetComponent<WebViewScript>().OffWebView();
+        if(Application.loadedLevelName == "0.Main")
+        {
+            webviewObj.GetComponent<WebViewScript>().OffWebView();
+        }
 
     }
 
@@ -1015,7 +1066,10 @@ public class BtnController : MonoBehaviour {
     {
         GameManager.talkCheck = false;
         close_panel.SetActive(false);
-        webviewObj.GetComponent<WebViewScript>().OnWebView();
+        if (Application.loadedLevelName == "0.Main")
+        {
+            webviewObj.GetComponent<WebViewScript>().OnWebView();
+        }
 
     }
     public void _menuCloseingame_btn()
@@ -1027,22 +1081,50 @@ public class BtnController : MonoBehaviour {
 
     public void _voice_use()
     {
+
+        if (GameManager.voiceNum > 0)
+        {
+            open_panel.SetActive(true);
+            gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = false;
+        }
+        else
+        {
+            //open_panel2.SetActive(true);
+        }
         //조건
-        open_panel.SetActive(true);
+        
+
+        /*
+        if (Application.loadedLevelName == "1.Game")
+        {
+            gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = false;
+            //gameManager.GetComponent<GameManager>().soundManagerOff();
+        }
+
+        if (Application.loadedLevelName == "0.Main")
+        {
+            
+        }*/
 
     }
 
     public void _voice_back()
     {
-        open_panel.GetComponent<Button>().interactable = false;
-        open_panel2.GetComponent<Button>().interactable = false;
-        close_panel.SetActive(false);
         
+        close_panel.SetActive(false);
+        voiceManager.GetComponent<VoiceManager>().reset();
+        gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = true;
 
+        if (Application.loadedLevelName == "1.Game")
+        {
+            //gameManager.GetComponent<GameManager>().soundManagerOn();
+        }
 
     }
 
-
     
+
+
+
 
 }

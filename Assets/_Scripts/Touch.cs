@@ -84,7 +84,14 @@ public class Touch : MonoBehaviour {
 
                     if (HookHit.collider.CompareTag("other"))
                     {
-                        npc.GetComponent<BtnController>().sendTalk_test();
+                        Debug.Log(HookHit.collider.name);
+                        //GameManager.talkCheck = true;
+                        npc.GetComponent<BtnController>().sendTalk_test(int.Parse(HookHit.collider.name));
+
+                        //처리
+                        //HookHit.collider.name
+
+                        
                     }
                     if (HookHit.collider.CompareTag("tv"))
                     {

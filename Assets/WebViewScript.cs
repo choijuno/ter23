@@ -14,6 +14,10 @@ public class Margins
 
 public class WebViewScript : MonoBehaviour {
 
+    private WebViewObject signupViewObject;
+    public long data;
+
+
     private WebViewObject webViewObject;
     private WebViewObject movieViewObject;
     public GameObject https;
@@ -36,6 +40,10 @@ public class WebViewScript : MonoBehaviour {
     public static string topic_s;
     public static string chNum_s;
 
+
+
+    int testbool;
+
     // Use this for initialization
     void Start () {
         id_s = "test";
@@ -46,6 +54,8 @@ public class WebViewScript : MonoBehaviour {
 
     }
 
+    public int check_view = 0;
+
     // Update is called once per frame
     void Update () {
         if (Application.platform == RuntimePlatform.Android)
@@ -53,12 +63,35 @@ public class WebViewScript : MonoBehaviour {
             //BotMargins = GameManager.chatSizebot;
 
             //text1.text = "TouchScreenKeyboard.isSupported : " + GetKeyboardSize();
-            /*if (GetKeyboardSize() != 0)
+            if (GetKeyboardSize() != 0)
             {
-                webViewObject.SetMargins(0, 0, 0, GetKeyboardSize());
+                testbool = GetKeyboardSize();
             }
-            else webViewObject.SetMargins(0, 0, 0, 0);
-            */
+            else testbool = 0; 
+            
+        }
+
+
+
+
+        switch (check_view)
+        {
+            case 1:
+                signupViewObject.SetMargins(0, 0, 0, 0 + testbool);
+            break;
+            case 2:
+                webViewObject.SetMargins(LeftMargins, TopMargins, RightMargins, BotMargins + testbool);
+                break;
+            case 3:
+                movieViewObject.SetMargins(LeftMargins, TopMargins, RightMargins, BotMargins + testbool);
+                break;
+            case 4:
+                webViewObject.SetMargins(myMagins[1].LeftMargins, myMagins[1].TopMargins, myMagins[1].RightMargins, myMagins[1].BotMargins);
+                break;
+            case 5:
+                webViewObject.SetMargins(myMagins[2].LeftMargins, myMagins[2].TopMargins, myMagins[2].RightMargins, myMagins[2].BotMargins);
+                break;
+
         }
 
     }
@@ -78,6 +111,40 @@ public class WebViewScript : MonoBehaviour {
         }
     }
 
+    public void StartSignup()
+    {
+        data = System.DateTime.Now.Ticks;
+
+
+
+        string strUrl = "http://ter23api.viewlab.kr/cpc/checkplus_main.php?user_id=" + data;
+        Debug.Log("webView = " + strUrl);
+        signupViewObject = (new GameObject("signupViewObject")).AddComponent<WebViewObject>();
+        signupViewObject.Init((msg) => {
+            Debug.Log(string.Format("CallFromJS[{0}]", msg));
+
+            
+        });
+
+        check_view = 1;
+
+        signupViewObject.LoadURL(strUrl);
+        signupViewObject.SetVisibility(true);
+        signupViewObject.SetMargins(0, 0, 0, 0 + testbool);
+
+        https.GetComponent<https>().signCheckdata_r.checkNum = data.ToString();
+        https.GetComponent<https>().Sign_check();
+
+    }
+
+    public void StopSignup()
+    {
+        Destroy(signupViewObject);
+
+    }
+
+
+
     public void StartWebView()
     {
         //https.GetComponent<https>()
@@ -89,6 +156,8 @@ public class WebViewScript : MonoBehaviour {
         webViewObject.Init((msg)=>{
             Debug.Log(string.Format("CallFromJS[{0}]", msg));
         });
+
+        check_view = 2;
 
         webViewObject.LoadURL(strUrl);
         webViewObject.SetVisibility(true);
@@ -105,6 +174,8 @@ public class WebViewScript : MonoBehaviour {
         movieViewObject.Init((msg) => {
             Debug.Log(string.Format("CallFromJS[{0}]", msg));
         });
+
+        check_view = 3;
 
         movieViewObject.LoadURL(strUrl);
         movieViewObject.SetVisibility(true);
@@ -141,10 +212,12 @@ public class WebViewScript : MonoBehaviour {
 
     public void setChat()
     {
+        check_view = 4;
         webViewObject.SetMargins(myMagins[1].LeftMargins, myMagins[1].TopMargins, myMagins[1].RightMargins, myMagins[1].BotMargins);
     }
     public void setMovieChat()
     {
+        check_view = 5;
         webViewObject.SetMargins(myMagins[2].LeftMargins, myMagins[2].TopMargins, myMagins[2].RightMargins, myMagins[2].BotMargins);
     }
 

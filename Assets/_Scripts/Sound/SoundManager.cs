@@ -13,8 +13,15 @@ public class SoundManager : Singleton<SoundManager>
 	{
 		_audioSource = GetComponent<AudioSource>();
 
+        if(Application.loadedLevelName == "0.Main")
+        {
+            BGM_SoundOFF();
+        }
 
-        BGM_SoundON();
+        if (Application.loadedLevelName == "1.Game")
+        {
+            BGM_SoundON();
+        }
 
     }
 	

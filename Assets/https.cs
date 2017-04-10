@@ -20,6 +20,17 @@ public class login{
     public string mb_icon;
 }
 
+[System.Serializable]
+public class signCheck
+{
+    public string user_id;
+    public string mb_name;
+    public string mb_birth;
+    public string mb_sex;
+    public string msg;
+    public string code;
+}
+
 //smsSend
 //1클래스
 [System.Serializable]
@@ -108,7 +119,18 @@ public class update_Icon
 
 }
 
-
+//ch_userGet
+[System.Serializable]
+public class chat_Member
+{
+    public string mb_id;
+    public string mb_name;
+    public string mb_icon;
+    public string mb_xp;
+    public string mb_point;
+    public string mb_sex;
+    public string mb_age;
+}
 
 
 //etc
@@ -136,6 +158,13 @@ public class result_data{
 }
 
 //보낼 데이타
+[System.Serializable]
+public class signCheckdata
+{
+    public string checkNum;
+
+}
+
 [System.Serializable]
 public class signupdata
 {
@@ -182,6 +211,14 @@ public class getChdata
 
 }
 
+//ch_userGet
+[System.Serializable]
+public class chat_Memberdata
+{
+    public string seq;
+    public string channel;
+}
+
 
 
 public class https : MonoBehaviour {
@@ -206,6 +243,8 @@ public class https : MonoBehaviour {
     public GameObject ch_prefabs;
     public GameObject ch_parent;
 
+    
+
 
     public roomMake roommake_r = new roomMake();
     public roommakedata roommakedata_r = new roommakedata();
@@ -220,14 +259,38 @@ public class https : MonoBehaviour {
     public update_Icon update_Icon_r = new update_Icon();
     public update_icondata update_icondata_r = new update_icondata();
 
+    public chat_Member[] chat_Member_r;
+    public chat_Memberdata chat_Memberdata_r = new chat_Memberdata();
+
+    public signCheck signCheck_r = new signCheck();
+    public signCheckdata signCheckdata_r = new signCheckdata();
+
+
 
     [Space]
     //obj
+    public GameObject gameManager;
     public GameObject roomMake_doneBtn;
     public GameObject login_Btn;
+    public GameObject signup_panel;
+
+    [Space]
+    public GameObject userlist_player;
+    public GameObject[] m_userlist;
+    public GameObject make_userParent;
+
+    [Space]
+    public GameObject mapUser_player;
+    public GameObject[] mapUsers;
 
     //함수부분
     //함수로 코루틴 호출.
+
+    public void Sign_check()
+    {
+        StartCoroutine(sign_check(signCheckdata_r.checkNum));
+    }
+
     public void Login_Sms(string phonenum)
     {
         StartCoroutine(login_smscheck(phonenum));
@@ -269,6 +332,11 @@ public class https : MonoBehaviour {
         StartCoroutine(update_icon(update_icondata_r.mb_id, update_icondata_r.mb_icon));
     }
 
+    public void Chat_member()
+    {
+        StartCoroutine(chat_member());
+    }
+
 
     public void Send_voice()
     {
@@ -296,6 +364,54 @@ public class https : MonoBehaviour {
         public T[] result;
     }
 
+
+
+    IEnumerator sign_check(string checkNum)
+    {
+
+        Debug.Log("signCheck!!!!!!!!!!===================");
+
+        WWWForm form = new WWWForm();
+        //3 ( API관리 홈페이지 ) 각각의 변수와 값 대입.
+        form.AddField("user_id", checkNum);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://ter23api.viewlab.kr/cpc/?", form))
+        {
+            yield return www.Send();
+
+            if (www.isError)
+            {
+
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+
+                signCheck[] s_signCheck = getJsonArray<signCheck>(www.downloadHandler.text);
+
+                signCheck_r = s_signCheck[0];
+
+                if(signCheck_r.msg == "성공" && signCheck_r.code == "100")
+                {
+                    GameObject.Find("webviewManager").GetComponent<WebViewScript>().StopSignup();
+                    signup_panel.SetActive(true);
+                    
+
+
+
+                } else
+                {
+                    yield return new WaitForSeconds(3f);
+                    StartCoroutine(sign_check(checkNum));
+                }
+                
+                
+                
+                
+
+            }
+        }
+    }
 
 
     //2코루틴.
@@ -339,6 +455,8 @@ public class https : MonoBehaviour {
             if (www.isError) {
                  
             } else {
+                string test_id;
+
                 login[] logins = getJsonArray<login> (www.downloadHandler.text);
                 login_r = logins [0];
                 //Debug.Log(www.downloadHandler.text);
@@ -353,8 +471,9 @@ public class https : MonoBehaviour {
 
                 login_Btn.GetComponent<BtnController>()._0_login_wait();
 
-                PlayerPrefs.SetString("idSave", login_r.mb_id);
-                PlayerPrefs.SetString("passSave", pass);
+                
+                PlayerPrefs.SetString("idSave", login_r.mb_id.ToString());
+                PlayerPrefs.SetString("passSave", pass.ToString());
 
                 PlayerPrefs.SetString("nameSave", login_r.mb_name);
                 PlayerPrefs.SetString("sexSave", login_r.mb_sex.ToString());
@@ -621,9 +740,40 @@ public class https : MonoBehaviour {
     {
         WWWForm form = new WWWForm();
         form.AddField("mb_id", id);
-
+        form.AddField("mb_icon", icon);
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://175.126.166.197:8081/api/?api_key=76a60f26663388643f8bfcad1e01e123&section=update_icon", form))
+        {
+            yield return www.Send();
+
+            Debug.Log("=======>1");
+
+            if (www.isError)
+            {
+                Debug.Log("=======>2");
+            }
+            else
+            {
+                Debug.Log("=======>3"+ www.downloadHandler.text);
+                update_Icon[] s_update_Icon = getJsonArray<update_Icon>(www.downloadHandler.text);
+                update_Icon_r = s_update_Icon[0];
+                
+                Debug.Log(update_Icon_r.code);
+                //Debug.Log(www.downloadHandler.text);
+            }
+        }
+    }
+
+    IEnumerator chat_member()
+    {
+        WWWForm form = new WWWForm();
+        //form.AddField("seq", GameManager.seqSave);
+        //form.AddField("channel", GameManager.channelSave);
+        form.AddField("seq", "1");
+        form.AddField("channel", "2");
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.126.166.197:8081/api/?api_key=76a60f26663388643f8bfcad1e01e123&section=chat_member", form))
         {
             yield return www.Send();
 
@@ -633,10 +783,119 @@ public class https : MonoBehaviour {
             }
             else
             {
-                update_Icon[] s_update_Icon = getJsonArray<update_Icon>(www.downloadHandler.text);
-                update_Icon_r = s_update_Icon[0];
-                //Debug.Log(sign_up_r.code);
-                //Debug.Log(www.downloadHandler.text);
+
+                Debug.Log("0==========chatmember");
+
+                //보상
+                gameManager.GetComponent<GameManager>().gameLoading();
+                GameManager.talkCheck = false;
+
+
+                chat_Member[] s_chat_Member = getJsonArray<chat_Member>(www.downloadHandler.text);
+
+                chat_Member_r = new chat_Member[s_chat_Member.Length];
+                //Debug.Log("chat_Member_r : " + chat_Member_r.Length);
+                m_userlist = new GameObject[s_chat_Member.Length];
+                mapUsers = new GameObject[s_chat_Member.Length];
+
+                for (int i = 0; i < s_chat_Member.Length; i++)
+                {
+                    chat_Member_r[i] = s_chat_Member[i];
+
+                    //userlist_player
+
+                    GameObject btn = Instantiate(userlist_player);
+                    btn.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+                    btn.gameObject.transform.parent = make_userParent.transform;
+                    btn.GetComponent<RectTransform>().transform.localPosition = new Vector3(0, 0, 0);
+
+                    btn.transform.FindChild("name_txt").GetComponent<Text>().text = chat_Member_r[i].mb_id;
+                    if(chat_Member_r[i].mb_icon != "")
+                    {
+                        btn.transform.FindChild("face").GetComponent<Image>().sprite = gameManager.GetComponent<GameManager>().avatarFace[int.Parse(chat_Member_r[i].mb_icon)];
+                    }
+                    
+
+                    btn.transform.localScale = Vector3.one;
+                    btn.transform.localRotation = Quaternion.identity;
+                    btn.gameObject.name = "player_" + i;
+                    //btn.GetComponent<BtnController>().gameManager = GameObject.Find("GameManager");
+                    //btn.GetComponent<BtnController>().open_panel = GameObject.Find("GameManager").GetComponent<GameManager>()._3_channel;
+                    //btn.GetComponent<BtnController>().myAni_out = GameObject.Find("2_room_window");
+                    //btn.GetComponent<BtnController>().https = GameObject.Find("https");
+
+                    m_userlist[i] = btn;
+                }
+
+                Debug.Log("2==========");
+
+
+                //map에 유저 생성.
+                if(Application.loadedLevelName == "1.Game")
+                {
+                    
+
+                    for (int i = 0; i < s_chat_Member.Length; i++)
+                    {
+                        chat_Member_r[i] = s_chat_Member[i];
+
+                        //userlist_player
+
+                        GameObject btn = Instantiate(mapUser_player);
+                        btn.gameObject.transform.localPosition = new Vector3(Random.Range(-7f,7f), 0, Random.Range(-7f, 7f));
+
+                        if (chat_Member_r[i].mb_icon != "")
+                        {
+
+                            btn.transform.FindChild("avatar").transform.FindChild("avatar_face").GetComponent<SpriteRenderer>().sprite = gameManager.GetComponent<GameManager>().avatarFace[int.Parse(chat_Member_r[i].mb_icon)];
+                        }
+                        btn.transform.FindChild("avatar").transform.FindChild("avatar_face").transform.FindChild("col").name = i.ToString();
+                        
+
+                        //btn.transform.localScale = Vector3.one;
+                        //btn.transform.localRotation = Quaternion.identity;
+                        btn.gameObject.name = "player_" + i;
+                        //btn.GetComponent<BtnController>().gameManager = GameObject.Find("GameManager");
+                        //btn.GetComponent<BtnController>().open_panel = GameObject.Find("GameManager").GetComponent<GameManager>()._3_channel;
+                        //btn.GetComponent<BtnController>().myAni_out = GameObject.Find("2_room_window");
+                        //btn.GetComponent<BtnController>().https = GameObject.Find("https");
+
+                        mapUsers[i] = btn;
+                    }
+
+                    string[] chat_id = new string[s_chat_Member.Length];
+                    int[] chat_icon = new int[s_chat_Member.Length];
+
+
+                    for (int i = 0; i < s_chat_Member.Length; i++)
+                    {
+
+                        //btn.transform.FindChild("avatar").transform.FindChild("avatar_face").GetComponent<SpriteRenderer>().sprite = gameManager.GetComponent<GameManager>().avatarFace[int.Parse(chat_Member_r[i].mb_icon)];
+                        chat_id[i] = chat_Member_r[i].mb_id;
+                        chat_icon[i] = int.Parse(chat_Member_r[i].mb_icon);
+
+                    }
+
+                    gameManager.GetComponent<HumanManager>().HumanEnter(s_chat_Member.Length, chat_id, chat_icon);
+
+                    gameManager.GetComponent<HumanManager>().HumanEnter2(s_chat_Member.Length, chat_id, chat_icon);
+
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
             }
         }
     }

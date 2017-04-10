@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -26,9 +27,17 @@ public class roomInfo_base
 
 
 public class GameManager : MonoBehaviour {
+
+    float touchtime = 0;
+    bool touchCheck;
+
     //http
     public GameObject https;
     public GameObject autoLogin_panel;
+    public EventSystem eventSystem;
+
+    //manager
+    public GameObject soundManager;
     //chaInfo
     public static string idSave = "";
     public static string passSave = "";
@@ -47,6 +56,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject loginBtn;
 
+    public GameObject waitPanel;
 
     [Space]
     //chatTest
@@ -76,6 +86,7 @@ public class GameManager : MonoBehaviour {
     public static int plancardNum;
     public static int fireNum;
     public static int taeNum;
+    public static int voiceNum;
     public static int playerXp;
 
     //sginup
@@ -140,13 +151,26 @@ public class GameManager : MonoBehaviour {
 
 
     public GameObject blackfade_out;
-	// Use this for initialization
-	void Start () {
+
+
+
+    public Text info_name_txt;
+    public Text info_age_txt;
+    public Text info_sex_txt;
+
+
+    // Use this for initialization
+    void Start () {
         //WebViewScript.destroyCheck = false;
         //player_id = "player";
         //Debug.Log(player_id);
         //SoundManager.GetInstance.BtnSoundON();
         //SoundManager.GetInstance.BGM_SoundON();
+
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        eventSystem.pixelDragThreshold = (int)(0.5f * Screen.dpi / 2.54f);
+
+
         switch (Application.loadedLevelName) {
 		case "0.testMain":
 			Invoke ("mainSet", 1f);
@@ -243,7 +267,11 @@ public class GameManager : MonoBehaviour {
 			break;
 
 		case "1.Game":
-                talkCheck = false;
+
+                talkCheck = true;
+                waitPanel.SetActive(true);
+                https.GetComponent<https>().Chat_member();
+
                 playCheck = true;
 
                 webviewObj.GetComponent<WebViewScript>().StartWebView();
@@ -265,6 +293,22 @@ public class GameManager : MonoBehaviour {
 
                 ChannelNum_txt.text = channelNum.ToString() + " 채널";
 
+
+
+
+                info_name_txt.text = idSave;
+                info_age_txt.text = ageSave;
+
+                if(sexSave == "1")
+                {
+
+                    info_sex_txt.text = "남성";
+                } else
+                {
+                    info_sex_txt.text = "여성";
+                }
+
+
             break;
 		}
 	}
@@ -274,46 +318,87 @@ public class GameManager : MonoBehaviour {
 
     void mainSet() {
 		main_main.SetActive (true);
-        /*
-        if (PlayerPrefs.HasKey("idSave"))
+
+        if (!playCheck)
         {
+            if (PlayerPrefs.HasKey("idSave"))
+            {
+
+
+                idSave = PlayerPrefs.GetString("idSave");
+                passSave = PlayerPrefs.GetString("passSave");
+
+
+                autoLogin_panel.SetActive(true);
+                Invoke("autoLogin", 1f);
 
 
 
 
+            }
+            else
+            {
 
-            PlayerPrefs.GetString("idSave", idSave);
-            PlayerPrefs.GetString("passSave", passSave);
-
-
-            //autoLogin_panel.SetActive(true);
-            //Invoke("autoLogin", 3f);
-
-
-
-
-            GameManager.player_id = idSave;
-            GameManager.player_pass = passSave;
-            https.GetComponent<https>().logindata_r.id = idSave;
-            https.GetComponent<https>().logindata_r.pass = passSave;
-
-            https.GetComponent<https>().SendMessage("Login");
-
-
+            }
 
 
         }
-        else
-        {
-
-        }
-        */
+        
 
 
     }
 
-	void Update ()
+    void autoLogin()
     {
+        GameManager.player_id = idSave;
+        GameManager.player_pass = passSave;
+        https.GetComponent<https>().logindata_r.id = idSave;
+        https.GetComponent<https>().logindata_r.pass = passSave;
+        https.GetComponent<https>().SendMessage("Login");
+        autoLogin_panel.SetActive(false);
+
+    }
+
+    public void gameLoading()
+    {
+        waitPanel.SetActive(false);
+    }
+
+    public void soundManagerOn()
+    {
+        soundManager.GetComponent<AudioSource>().enabled = true;
+    }
+    public void soundManagerOff()
+    {
+        soundManager.GetComponent<AudioSource>().enabled = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            touchtime = touchtime - Time.deltaTime;
+            //Debug.Log(touchtime);
+            //Debug.Log(touchCheck);
+            if (!touchCheck)
+            {
+                touchCheck = true;
+                touchtime = 0.1f;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            touchCheck = false;
+            //Debug.Log(touchCheck);
+
+            if (touchtime > 0)
+            {
+                SoundManager.GetInstance.BtnSoundON();
+            }
+        }
+
+
         //TestDebug_txt.text = TouchScreenKeyboard.visible.ToString();
 
         /*if (TouchScreenKeyboard.visible)
@@ -324,9 +409,10 @@ public class GameManager : MonoBehaviour {
             keyCheck = false;
         }*/
 
-        if (Input.GetKeyDown (KeyCode.Escape)) {
-			Application.Quit ();
-		}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
         
     }

@@ -8,7 +8,7 @@ public class VoiceManager : MonoBehaviour
     Recorder recorder;
     AudioSource _audioSource;
     AudioClip testClip;
-
+    public GameObject gameManager;
     public GameObject https;
     public Text debug_txt;
 
@@ -20,11 +20,22 @@ public class VoiceManager : MonoBehaviour
     public GameObject webViewManager;
 
     float second;
+    float second_max;
     bool voiceStart;
+    bool voicePlay;
 
     public Text TimeTxt;
     public bool autoPlay; //자동 재생
-    
+
+
+
+    public GameObject point_start;
+    public GameObject point_stop;
+    public GameObject point_play;
+    public GameObject point_playbreak;
+    public Button point_send;
+    public Text point_time;
+
     void OnEnable()
     {
         recorder = new Recorder();
@@ -54,7 +65,27 @@ public class VoiceManager : MonoBehaviour
             second += Time.deltaTime;
             TimeTxt.text = second.ToString("0:00");
         }
-        
+
+        if (voicePlay)
+        {
+            if(second <= second_max)
+            {
+
+                second += Time.deltaTime;
+                TimeTxt.text = second.ToString("0:00");
+
+            } else
+            {
+                second = 0;
+                TimeTxt.text = second.ToString("0:00");
+                voicePlay = false;
+                point_playbreak.SetActive(false);
+                point_play.SetActive(true);
+                point_send.interactable = true;
+
+            }
+        }
+
 
     }
     public void recorder_Start()
@@ -65,6 +96,9 @@ public class VoiceManager : MonoBehaviour
             {
                 voiceStart = true;
                 recorder.StartRecording(false, 60);
+
+                point_start.SetActive(false);
+                point_stop.SetActive(true);
             }
         }
     }
@@ -77,12 +111,16 @@ public class VoiceManager : MonoBehaviour
             if (recorder.IsRecording)
             {
                 voiceStart = false;
+                second_max = second;
                 second = 0;
                 TimeTxt.text = "0:00";
                 recorder.StopRecording();
                 recorder_Save();
                 send_btn.interactable = true;
-                play_btn.interactable = true;
+                //play_btn.interactable = true;
+
+                point_stop.gameObject.SetActive(false);
+                point_play.SetActive(true);
             }
         }
     }
@@ -94,6 +132,10 @@ public class VoiceManager : MonoBehaviour
             if (recorder.hasRecorded)
             {
                 recorder.PlayAudio(System.IO.Path.Combine(Application.persistentDataPath, "Audio123.wav"), _audioSource);
+                voicePlay = true;
+                point_play.SetActive(false);
+                point_playbreak.SetActive(true);
+                point_send.interactable = false;
             }
         }
     }
@@ -120,17 +162,30 @@ public class VoiceManager : MonoBehaviour
     public void send_voice()
     {
         https.GetComponent<https>().Send_voice();
-        second = 0;
-        TimeTxt.text = "0:00";
-        //조건
-        play_btn.interactable = false;
-        send_btn.interactable = false;
+
+        //조건 (보이스보유).
+
+        //결과.
+        reset();
 
         panel1.SetActive(false);
         panel2.SetActive(false);
 
-        webViewManager.GetComponent<WebViewScript>().OnWebView();
-        
+        if (Application.loadedLevelName == "1.Game")
+        {
+            //gameManager.GetComponent<GameManager>().soundManagerOn();
+            GetComponent<AudioSource>().enabled = true;
+            GameManager.talkCheck = false;
+        }
+
+
+
+        if (Application.loadedLevelName == "0.Main")
+        {
+            webViewManager.GetComponent<WebViewScript>().OnWebView();
+            GetComponent<AudioSource>().enabled = true;
+        }
+
     }
 
     public void recorder_Load()
@@ -171,5 +226,25 @@ public class VoiceManager : MonoBehaviour
         //recorder.PlayAudio (path, _audioSource);
     }
 
+
+    public void reset()
+    {
+        if (recorder.IsRecording)
+        {
+            recorder.StopRecording();
+        }
+        recorder_Dipose();
+
+        voicePlay = false;
+        voiceStart = false;
+        point_start.SetActive(true);
+        point_stop.SetActive(false);
+        point_play.SetActive(false);
+        point_playbreak.SetActive(false);
+        send_btn.interactable = false;
+        second = 0;
+        second_max = 0;
+        point_time.text = "0:00";
+    }
 
 }
