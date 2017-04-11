@@ -24,35 +24,11 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_30_stage__time = "CgkIx6Tc-r0KEAIQFA"; // <GPGSID>
-        public const string leaderboard_10_stage__time = "CgkIx6Tc-r0KEAIQHA"; // <GPGSID>
-        public const string leaderboard_80_stage__time = "CgkIx6Tc-r0KEAIQGQ"; // <GPGSID>
-        public const string achievement_legend_star = "CgkIx6Tc-r0KEAIQDw"; // <GPGSID>
-        public const string achievement_king_star = "CgkIx6Tc-r0KEAIQDg"; // <GPGSID>
-        public const string achievement_rich = "CgkIx6Tc-r0KEAIQAw"; // <GPGSID>
-        public const string leaderboard_100_stage__time = "CgkIx6Tc-r0KEAIQGw"; // <GPGSID>
-        public const string leaderboard_60_stage__time = "CgkIx6Tc-r0KEAIQFw"; // <GPGSID>
-        public const string achievement_animal_protection_association = "CgkIx6Tc-r0KEAIQEg"; // <GPGSID>
-        public const string leaderboard_40_stage__time = "CgkIx6Tc-r0KEAIQFQ"; // <GPGSID>
-        public const string achievement_collector_star = "CgkIx6Tc-r0KEAIQDA"; // <GPGSID>
-        public const string achievement_ordinary = "CgkIx6Tc-r0KEAIQAg"; // <GPGSID>
-        public const string achievement_lucky = "CgkIx6Tc-r0KEAIQBw"; // <GPGSID>
-        public const string achievement_super_lucky = "CgkIx6Tc-r0KEAIQCA"; // <GPGSID>
-        public const string achievement_animal_protection_center = "CgkIx6Tc-r0KEAIQEQ"; // <GPGSID>
-        public const string leaderboard_20_stage__time = "CgkIx6Tc-r0KEAIQEw"; // <GPGSID>
-        public const string leaderboard_90_stage__time = "CgkIx6Tc-r0KEAIQGg"; // <GPGSID>
-        public const string achievement_millionaire = "CgkIx6Tc-r0KEAIQBA"; // <GPGSID>
-        public const string leaderboard_acquired_star = "CgkIx6Tc-r0KEAIQHQ"; // <GPGSID>
-        public const string leaderboard_70_stage__time = "CgkIx6Tc-r0KEAIQGA"; // <GPGSID>
-        public const string achievement_are_you_sleeping = "CgkIx6Tc-r0KEAIQBg"; // <GPGSID>
-        public const string achievement_animal_protection_group = "CgkIx6Tc-r0KEAIQEA"; // <GPGSID>
-        public const string achievement_master_star = "CgkIx6Tc-r0KEAIQDQ"; // <GPGSID>
-        public const string achievement_merge_lucky = "CgkIx6Tc-r0KEAIQCQ"; // <GPGSID>
-        public const string leaderboard_50_stage__time = "CgkIx6Tc-r0KEAIQFg"; // <GPGSID>
-        public const string achievement_skin_master = "CgkIx6Tc-r0KEAIQCw"; // <GPGSID>
-        public const string achievement_skin_collector = "CgkIx6Tc-r0KEAIQCg"; // <GPGSID>
-        public const string achievement_pool = "CgkIx6Tc-r0KEAIQAQ"; // <GPGSID>
-        public const string achievement_never_give_up = "CgkIx6Tc-r0KEAIQBQ"; // <GPGSID>
+        public const string achievement_23 = "CgkI_NDFoewaEAIQAQ"; // <GPGSID>
+        public const string achievement_12 = "CgkI_NDFoewaEAIQBA"; // <GPGSID>
+        public const string achievement_ = "CgkI_NDFoewaEAIQAw"; // <GPGSID>
+        public const string achievement_122 = "CgkI_NDFoewaEAIQBQ"; // <GPGSID>
+        public const string achievement_234 = "CgkI_NDFoewaEAIQAg"; // <GPGSID>
 
 }
 

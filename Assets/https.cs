@@ -769,8 +769,8 @@ public class https : MonoBehaviour {
         WWWForm form = new WWWForm();
         //form.AddField("seq", GameManager.seqSave);
         //form.AddField("channel", GameManager.channelSave);
-        form.AddField("seq", "1");
-        form.AddField("channel", "2");
+        form.AddField("seq", GameManager.seqSave);
+        form.AddField("channel", GameManager.channelSave);
 
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://175.126.166.197:8081/api/?api_key=76a60f26663388643f8bfcad1e01e123&section=chat_member", form))

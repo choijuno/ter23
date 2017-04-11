@@ -93,6 +93,11 @@ public class BtnController : MonoBehaviour {
     public Text statinfo_age_txt;
     public Text statinfo_sex_txt;
 
+
+	public string clickname_txt;
+	public int clicknum_int;
+	
+	
     public void _0_login() {
         //id
 		GameManager.player_id = playerid_txt.text;
@@ -688,84 +693,105 @@ public class BtnController : MonoBehaviour {
 
     public void _ingame_usePicketBtn()
     {
-        if (GameManager.picketNum > 0)
-        {
-            open_panel.SetActive(true);
-        }
-        else
-        {
-            open_panel2.SetActive(true);
-        }
-    }
+		if(ES2.Exists("picket"))
+		{
+			if(ES2.Load<int>("picket") > 0)
+			{
+				open_panel.SetActive(true);
+			}
+			else
+			{
+				open_panel2.SetActive(true);
+			}
+		}
+	}
     public void _ingame_usePlanCardBtn()
     {
-        if (GameManager.plancardNum > 0)
-        {
-            open_panel.SetActive(true);
-        }
-        else
-        {
-            open_panel2.SetActive(true);
-        }
-    }
+		if(ES2.Exists("plancard"))
+		{
+			if(ES2.Load<int>("plancard") > 0)
+			{
+				open_panel.SetActive(true);
+			}
+			else
+			{
+				open_panel2.SetActive(true);
+			}
+		}
+	}
     public void _ingame_useFireBtn()
     {
-        if (GameManager.fireNum > 0)
-        {
-            open_panel.SetActive(true);
-        }
-        else
-        {
-            open_panel2.SetActive(true);
-        }
-    }
+		if(ES2.Exists("fire"))
+		{
+			if(ES2.Load<int>("fire") > 0)
+			{
+				open_panel.SetActive(true);
+			}
+			else
+			{
+				open_panel2.SetActive(true);
+			}
+		}
+
+	}
     public void _ingame_useTaeBtn()
     {
-        if (GameManager.taeNum > 0)
-        {
-            open_panel.SetActive(true);
-        }
-        else
-        {
-            open_panel2.SetActive(true);
-        }
-    }
+		if(ES2.Exists("tae"))
+		{
+			if(ES2.Load<int>("tae") > 0)
+			{
+				open_panel.SetActive(true);
+			}
+			else
+			{
+				open_panel2.SetActive(true);
+			}
+		}
+	}
     
 
     public void _ingame_usePicket()
     {
-        
-            _ingame_myTalkBtn();
-            GameManager.picketNum--;
-            myInfo.GetComponent<myInfo>().SetItem(1);
-        webviewObj.GetComponent<WebViewScript>().OnWebView();
-    }
+		if(ES2.Exists("picket"))
+			ES2.Save<int>(ES2.Load<int>("picket") - 1,"picket");
+		gameManager.GetComponent<GameManager>().ItemTxt();
+		_ingame_myTalkBtn();
+
+		myInfo.GetComponent<myInfo>().SetItem(1);
+		webviewObj.GetComponent<WebViewScript>().OnWebView();
+	}
 
     public void _ingame_usePlanCard()
-    {
-            _ingame_myTalkBtn();
-            GameManager.plancardNum--;
-            myInfo.GetComponent<myInfo>().SetItem(2);
-        webviewObj.GetComponent<WebViewScript>().OnWebView();
-    }
+	{
+		_ingame_myTalkBtn();
+		if(ES2.Exists("plancard"))
+			ES2.Save<int>(ES2.Load<int>("plancard") - 1,"plancard");
+		gameManager.GetComponent<GameManager>().ItemTxt();
+		myInfo.GetComponent<myInfo>().SetItem(2);
+		webviewObj.GetComponent<WebViewScript>().OnWebView();
+	}
 
     public void _ingame_useFire()
     {
-            GameManager.fireNum--;
-            myInfo.GetComponent<myInfo>().SetItem(3);
-            close_panel.SetActive(false);
-            close_panel2.SetActive(false);
-        webviewObj.GetComponent<WebViewScript>().OnWebView();
-    }
+		if(ES2.Exists("fire"))
+			ES2.Save<int>(ES2.Load<int>("fire") - 1,"fire");
+		gameManager.GetComponent<GameManager>().ItemTxt();
+		myInfo.GetComponent<myInfo>().SetItem(3);
+		close_panel.SetActive(false);
+		close_panel2.SetActive(false);
+		webviewObj.GetComponent<WebViewScript>().OnWebView();
+	}
 
     public void _ingame_useTae()
     {
-            GameManager.taeNum--;
-            myInfo.GetComponent<myInfo>().SetItem(4);
-            close_panel.SetActive(false);
-            close_panel2.SetActive(false);
-        webviewObj.GetComponent<WebViewScript>().OnWebView();
-    }
+		if(ES2.Exists("tae"))
+			ES2.Save<int>(ES2.Load<int>("tae") - 1,"tae");
+		gameManager.GetComponent<GameManager>().ItemTxt();
+		myInfo.GetComponent<myInfo>().SetItem(4);
+		close_panel.SetActive(false);
+		close_panel2.SetActive(false);
+		webviewObj.GetComponent<WebViewScript>().OnWebView();
+	}
 
     public void _ingame_useItem_cancel()
     {
@@ -832,9 +858,20 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_picket_buy() //피켓 인앱
     {
         close_panel.SetActive(false);
-        GameManager.picketNum = GameManager.picketNum + 4;
-        GameManager.playerXp = GameManager.playerXp - 10;
+		GoogleInAppManager.Instance.BuyPicket();
     }
+
+	public void _ingame_shop_voice()
+    {
+        open_panel.SetActive(true);
+
+    }
+	public void _ingame_shop_voice_buy()
+	{
+		close_panel.SetActive(false);
+		GoogleInAppManager.Instance.BuyVoice();
+       
+	}
 
     public void _ingame_shop_planCard() 
     {
@@ -843,8 +880,8 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_planCard_buy() //플랜카드 인앱
     {
         close_panel.SetActive(false);
-        GameManager.plancardNum = GameManager.plancardNum + 4;
-        GameManager.playerXp = GameManager.playerXp - 20;
+		GoogleInAppManager.Instance.BuyPlanCard();
+     
     }
 
     public void _ingame_shop_fire() 
@@ -854,8 +891,8 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_fire_buy() //불 인앱
     {
         close_panel.SetActive(false);
-        GameManager.fireNum = GameManager.fireNum + 4;
-        GameManager.playerXp = GameManager.playerXp - 40;
+		GoogleInAppManager.Instance.BuyFire();
+    
     }
 
     public void _ingame_shop_tae()
@@ -865,9 +902,11 @@ public class BtnController : MonoBehaviour {
     public void _ingame_shop_tae_buy() // 태극기 인앱
     {
         close_panel.SetActive(false);
-        GameManager.taeNum = GameManager.taeNum + 4;
-        GameManager.playerXp = GameManager.playerXp - 40;
+		GoogleInAppManager.Instance.BuyTae();
+       
     }
+
+	
 
     public void _ingame_shop_buy_cancel()
     {
@@ -977,7 +1016,7 @@ public class BtnController : MonoBehaviour {
 
 
             Debug.Log(https.GetComponent<https>().chat_Member_r[chaNum].mb_id);
-
+			
             statinfo_name_txt.text = https.GetComponent<https>().chat_Member_r[chaNum].mb_id;
             statinfo_age_txt.text = https.GetComponent<https>().chat_Member_r[chaNum].mb_age;
             
@@ -991,7 +1030,8 @@ public class BtnController : MonoBehaviour {
                 statinfo_sex_txt.text = "여성";
             }
 
-
+			clickname_txt = statinfo_name_txt.text;
+			clicknum_int = chaNum;
             
         }
     }
@@ -1082,33 +1122,37 @@ public class BtnController : MonoBehaviour {
     public void _voice_use()
     {
 
-        if (GameManager.voiceNum > 0)
-        {
-            open_panel.SetActive(true);
-            gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = false;
-        }
-        else
-        {
-            //open_panel2.SetActive(true);
-        }
-        //조건
-        
 
-        /*
-        if (Application.loadedLevelName == "1.Game")
-        {
-            gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = false;
-            //gameManager.GetComponent<GameManager>().soundManagerOff();
-        }
+		if(ES2.Exists("voice"))
+		{
+			if(ES2.Load<int>("voice") > 0)
+			{
+				open_panel.SetActive(true);
+				gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = false;
+			}
+			else
+			{
+				//open_panel2.SetActive(true);
+			}
+			//조건
 
-        if (Application.loadedLevelName == "0.Main")
-        {
-            
-        }*/
 
-    }
+			/*
+			if (Application.loadedLevelName == "1.Game")
+			{
+				gameManager.GetComponent<GameManager>().soundManager.GetComponent<AudioSource>().enabled = false;
+				//gameManager.GetComponent<GameManager>().soundManagerOff();
+			}
 
-    public void _voice_back()
+			if (Application.loadedLevelName == "0.Main")
+			{
+
+			}*/
+		}
+
+	}
+
+	public void _voice_back()
     {
         
         close_panel.SetActive(false);

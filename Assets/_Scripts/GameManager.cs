@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour {
     public Text info_age_txt;
     public Text info_sex_txt;
 
+	public Text[] item_have_txt;
 
     // Use this for initialization
     void Start () {
@@ -267,6 +268,9 @@ public class GameManager : MonoBehaviour {
 			break;
 
 		case "1.Game":
+				//item_have_txt[0].text = 
+
+
 
                 talkCheck = true;
                 waitPanel.SetActive(true);
@@ -372,7 +376,14 @@ public class GameManager : MonoBehaviour {
     {
         soundManager.GetComponent<AudioSource>().enabled = false;
     }
-
+	public void ItemTxt()
+	{
+		item_have_txt[0].text = ES2.Load<int>("picket").ToString();
+		item_have_txt[1].text = ES2.Load<int>("plancard").ToString();
+		item_have_txt[2].text = ES2.Load<int>("fire").ToString();
+		item_have_txt[3].text = ES2.Load<int>("tae").ToString();
+		item_have_txt[4].text = ES2.Load<int>("voice").ToString();
+	}
     void Update()
     {
         if (Input.GetMouseButton(0))

@@ -64,6 +64,12 @@ public class VoiceManager : MonoBehaviour
         {
             second += Time.deltaTime;
             TimeTxt.text = second.ToString("0:00");
+			if(second > 15)
+			{
+				second = 14;
+				TimeTxt.text = second.ToString("0:00");
+				recorder_Stop();
+			}
         }
 
         if (voicePlay)
@@ -161,6 +167,8 @@ public class VoiceManager : MonoBehaviour
 
     public void send_voice()
     {
+
+
         https.GetComponent<https>().Send_voice();
 
         //조건 (보이스보유).
@@ -185,7 +193,8 @@ public class VoiceManager : MonoBehaviour
             webViewManager.GetComponent<WebViewScript>().OnWebView();
             GetComponent<AudioSource>().enabled = true;
         }
-
+		ES2.Save<int>(ES2.Load<int>("voice") - 1, "voice");
+		gameManager.GetComponent<GameManager>().ItemTxt();
     }
 
     public void recorder_Load()
